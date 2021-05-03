@@ -12,7 +12,8 @@
 		058F8A4C264035C2008F3A59 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058F8A4626403546008F3A59 /* Money.swift */; };
 		058F8A4D264035C2008F3A59 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058F8A4726403548008F3A59 /* Data.swift */; };
 		058F8A4E264035C2008F3A59 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058F8A4926403557008F3A59 /* Stock.swift */; };
-		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
+		058F8A5726403BAB008F3A59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058F8A5626403BA3008F3A59 /* AppDelegate.swift */; };
+		058F8A5B26403BBC008F3A59 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058F8A5A26403BBC008F3A59 /* SceneDelegate.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 		7555FFB2242A642300829871 /* shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7555FFB1242A642300829871 /* shared.framework */; };
 		7555FFB3242A642300829871 /* shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7555FFB1242A642300829871 /* shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -38,7 +39,8 @@
 		058F8A4626403546008F3A59 /* Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		058F8A4726403548008F3A59 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		058F8A4926403557008F3A59 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
-		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
+		058F8A5626403BA3008F3A59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		058F8A5A26403BBC008F3A59 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,7 +82,8 @@
 		058F8A4B26403577008F3A59 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				2152FB032600AC8F00CF470E /* iOSApp.swift */,
+				058F8A5A26403BBC008F3A59 /* SceneDelegate.swift */,
+				058F8A5626403BA3008F3A59 /* AppDelegate.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -214,8 +217,9 @@
 				058F8A3C26403325008F3A59 /* StockView.swift in Sources */,
 				058F8A4D264035C2008F3A59 /* Data.swift in Sources */,
 				058F8A4C264035C2008F3A59 /* Money.swift in Sources */,
+				058F8A5726403BAB008F3A59 /* AppDelegate.swift in Sources */,
+				058F8A5B26403BBC008F3A59 /* SceneDelegate.swift in Sources */,
 				058F8A4E264035C2008F3A59 /* Stock.swift in Sources */,
-				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				058F8A3B26403325008F3A59 /* StockLookupView.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 			);
