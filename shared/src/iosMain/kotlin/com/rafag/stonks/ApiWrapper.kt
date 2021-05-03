@@ -4,10 +4,9 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
 class ApiWrapper {
-    fun Api.request(completion: (String) -> Unit) {
-        val api = this
+    fun testRequest(completion: (String) -> Unit) {
         MainScope().launch {
-            val result = api.testQuery()
+            val result = Api().testQuery()
             completion(result)
         }
     }

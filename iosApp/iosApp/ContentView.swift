@@ -1,16 +1,36 @@
 import SwiftUI
-import shared
 
 struct ContentView: View {
-    let greet = Greeting().greeting()
-    
+    @State var stocks: [Stock]
+    @State var isStockLookupShowing: Bool = false
     var body: some View {
-        Text(greet)
+        NavigationView {
+            List {
+                ForEach(stocks) { stock in
+                    StockView(stock: stock)
+                }
+            }
+            .navigationBarTitle(Text("📈 Stonks tracker"))
+            .navigationBarItems(trailing:
+                Button(action: {
+                    isStockLookupShowing = true
+                }) {
+                    Image(systemName: "plus.circle").imageScale(.large)
+                }.sheet(isPresented: $isStockLookupShowing, onDismiss: {}, content: {
+                    StockLookupView()
+                })
+            )
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView(stocks: [Stock(id: "APL", name: "Apple", price: Money(whole: 1399, cents: 23))]
+            )
+        
+        }
     }
 }
+
