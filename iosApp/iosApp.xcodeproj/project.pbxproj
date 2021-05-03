@@ -60,6 +60,9 @@
 		058F8A4526403541008F3A59 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				058F8A4926403557008F3A59 /* Stock.swift */,
+				058F8A4726403548008F3A59 /* Data.swift */,
+				058F8A4626403546008F3A59 /* Money.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -67,6 +70,9 @@
 		058F8A4A26403568008F3A59 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7555FF82242A565900829871 /* ContentView.swift */,
+				058F8A3726403325008F3A59 /* StockLookupView.swift */,
+				058F8A3926403325008F3A59 /* StockView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -74,6 +80,7 @@
 		058F8A4B26403577008F3A59 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -99,13 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				7555FF8C242A565B00829871 /* Info.plist */,
-				2152FB032600AC8F00CF470E /* iOSApp.swift */,
-				058F8A4926403557008F3A59 /* Stock.swift */,
-				058F8A4726403548008F3A59 /* Data.swift */,
-				058F8A4626403546008F3A59 /* Money.swift */,
-				7555FF82242A565900829871 /* ContentView.swift */,
-				058F8A3726403325008F3A59 /* StockLookupView.swift */,
-				058F8A3926403325008F3A59 /* StockView.swift */,
 				058F8A4B26403577008F3A59 /* App */,
 				058F8A4A26403568008F3A59 /* Views */,
 				058F8A4526403541008F3A59 /* Data */,
