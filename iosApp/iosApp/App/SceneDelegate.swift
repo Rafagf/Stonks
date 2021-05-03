@@ -15,16 +15,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller.
 //        Api().request {
             // Create the SwiftUI view that provides the window contents.
+        ApiWrapper().testRequest(completion: { apiResponse in
             let contentView = ContentView(stocks: Data.getData())
-//            print($0)
+            print(apiResponse)
             if let windowScene = scene as? UIWindowScene {
                 let window = UIWindow(windowScene: windowScene)
                 window.rootViewController = UIHostingController(rootView: contentView)
                 self.window = window
                 window.makeKeyAndVisible()
             }
-        }
-
+        })
+        
+    }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
