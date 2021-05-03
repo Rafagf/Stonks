@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.rafag.stonks.Greeting
 import android.widget.TextView
-import com.rafag.stonks.Ktor
+import com.rafag.stonks.Api
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 
         launch {
             val tv: TextView = findViewById(R.id.text_view)
-            tv.text = greet() + Ktor().testQuery()
+            tv.text = greet() + Api().testQuery()
         }
     }
 }

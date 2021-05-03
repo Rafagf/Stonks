@@ -12,7 +12,7 @@ import io.ktor.http.HttpMethod
 import io.ktor.http.Url
 import kotlinx.serialization.json.Json
 
-class Ktor {
+class Api {
 
     private val client = HttpClient {
         install(JsonFeature) {
