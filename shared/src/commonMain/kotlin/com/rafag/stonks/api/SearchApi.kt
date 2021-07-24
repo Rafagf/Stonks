@@ -1,6 +1,6 @@
-package com.rafag.stonks
+package com.rafag.stonks.api
 
-import com.rafag.stonks.Method.*
+import com.rafag.stonks.api.Method.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

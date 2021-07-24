@@ -1,4 +1,4 @@
-package com.rafag.stonks
+package com.rafag.stonks.api
 
 import io.ktor.client.HttpClient
 import io.ktor.client.features.json.JsonFeature
@@ -19,7 +19,7 @@ data class StonksHttpClient(
 ) {
 
     internal suspend inline fun <reified T> execute(request: HttpRequest<T>): T {
-        return client.request("${BASE_URL}${request.url}${TOKEN}") {
+        return client.request("$BASE_URL${request.url}$TOKEN") {
             this.method = HttpMethod.Get
             this.body = request.body
         }

@@ -1,4 +1,4 @@
-package com.rafag.stonks
+package com.rafag.stonks.api
 
 import io.ktor.client.utils.EmptyContent
 import io.ktor.http.content.OutgoingContent
