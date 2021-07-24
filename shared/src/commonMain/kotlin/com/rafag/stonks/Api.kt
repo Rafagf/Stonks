@@ -12,6 +12,8 @@ import io.ktor.client.request.request
 import io.ktor.http.HttpMethod
 import io.ktor.http.HttpMethod.*
 import io.ktor.http.Url
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
 private const val BASE_URL = "https://finnhub.io/api/v1/"
@@ -24,6 +26,7 @@ class Api {
             serializer = KotlinxSerializer(Json {
                 prettyPrint = true
                 isLenient = true
+                ignoreUnknownKeys = true
             })
         }
         install(Logging) {
@@ -51,11 +54,6 @@ class Api {
     }
 }
 
-data class HttpRequest(
-    val method: HttpMethod,
-    val path: String
-)
-
 object ApiRequests {
 
     fun quote(symbol: String) = HttpRequest(
@@ -68,5 +66,8 @@ object ApiRequests {
         path = "search?q=${input}"
     )
 }
+
+
+
 
 fun HttpRequest.toUrl() = Url("${BASE_URL}${this.path}${TOKEN}")
