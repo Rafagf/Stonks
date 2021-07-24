@@ -4,7 +4,7 @@ import com.rafag.stonks.api.Method.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-class SearchApi {
+object SearchApi {
 
     fun searchRequest(symbol: String) = HttpRequest<ApiSearchResponse>(
         method = GET,

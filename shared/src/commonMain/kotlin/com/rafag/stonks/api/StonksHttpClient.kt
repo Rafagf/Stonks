@@ -14,8 +14,8 @@ private const val BASE_URL = "https://finnhub.io/api/v1/"
 private const val TOKEN = "&token=c1o8a9237fkqrr9sc3a0"
 
 data class StonksHttpClient(
-    val baseUrl: String = BASE_URL,
-    val client: HttpClient = defaultHttpClient()
+    private val baseUrl: String = BASE_URL,
+    private val client: HttpClient = defaultHttpClient()
 ) {
 
     internal suspend inline fun <reified T> execute(request: HttpRequest<T>): T {

@@ -4,7 +4,7 @@ import com.rafag.stonks.api.Method.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-class QuoteApi {
+object QuoteApi {
 
     fun quoteRequest(symbol: String) = HttpRequest<ApiQuoteResponse>(
         method = GET,
