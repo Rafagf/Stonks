@@ -1,8 +1,14 @@
 package com.rafag.stonks.data.quote
 
-import com.rafag.stonks.api.internal.ApiQuoteResponse
-
 interface QuoteRepository {
 
-    suspend fun quote(symbol: String): ApiQuoteResponse
+    suspend fun quote(symbol: String): Quote
 }
+
+data class Quote(
+    val current: Double,
+    val high: Double,
+    val low: Double,
+    val open: Double,
+    val previousClose: Double,
+)

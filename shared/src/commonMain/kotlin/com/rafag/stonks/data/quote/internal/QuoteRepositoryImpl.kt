@@ -1,20 +1,18 @@
 package com.rafag.stonks.data.quote.internal
 
+import com.rafag.stonks.api.StonksHttpClient
 import com.rafag.stonks.api.internal.ApiQuoteResponse
 import com.rafag.stonks.api.internal.QuoteApi
-import com.rafag.stonks.api.StonksHttpClient
+import com.rafag.stonks.data.quote.Quote
 import com.rafag.stonks.data.quote.QuoteRepository
-import com.stonks.db.QuoteDb
-import com.stonks.db.QuoteQueries
-import com.stonks.db.StonksDatabase
+import com.stonks.db.DbQuote
 
 class QuoteRepositoryImpl(
     private val httpClient: StonksHttpClient,
-    private val db: StonksDatabase,
+    private val persistence: QuotePersistence,
 ) : QuoteRepository {
 
-    override suspend fun quote(symbol: String): ApiQuoteResponse {
-        //todo we need another layer of models: the one we return to clients, API, and DB
+    override suspend fun quote(symbol: String): Quote {
         return try {
             fromApi(symbol)
         } catch (exception: Exception) {
@@ -22,29 +20,24 @@ class QuoteRepositoryImpl(
         }
     }
 
-    private suspend fun fromApi(symbol: String): ApiQuoteResponse {
+    private suspend fun fromApi(symbol: String): Quote {
         val apiResponse = httpClient.execute(QuoteApi.quoteRequest(symbol))
-        db.quoteQueries.upsert(symbol, apiResponse)
-        return apiResponse
+        persistence.upsert(symbol, apiResponse)
+        return apiResponse.toModel()
     }
 
-    private fun fromDb(symbol: String): ApiQuoteResponse {
-        return db.quoteQueries.get(symbol).executeAsOne().toApi()
-    }
+    private fun fromDb(symbol: String) = persistence.get(symbol).toModel()
 }
 
-private fun QuoteQueries.upsert(symbol: String, apiResponse: ApiQuoteResponse) {
-    this.upsert(
-        symbol = symbol,
-        current = apiResponse.current,
-        high = apiResponse.high,
-        low = apiResponse.low,
-        open_ = apiResponse.open,
-        previousClose = apiResponse.previousClose
-    )
-}
+private fun ApiQuoteResponse.toModel() = Quote(
+    current = current,
+    high = high,
+    low = low,
+    open = open,
+    previousClose = previousClose
+)
 
-private fun QuoteDb.toApi() = ApiQuoteResponse(
+private fun DbQuote.toModel() = Quote(
     current = current,
     high = high,
     low = low,

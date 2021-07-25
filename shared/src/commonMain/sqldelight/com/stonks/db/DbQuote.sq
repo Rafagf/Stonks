@@ -1,4 +1,4 @@
-CREATE TABLE QuoteDb (
+CREATE TABLE DbQuote (
   symbol TEXT NOT NULL PRIMARY KEY,
   current REAL NOT NULL,
   high REAL NOT NULL,
@@ -9,10 +9,10 @@ CREATE TABLE QuoteDb (
 
 get:
 SELECT *
-FROM QuoteDb
+FROM DbQuote
 WHERE symbol = ?;
 
 upsert:
-INSERT OR REPLACE INTO QuoteDb
+INSERT OR REPLACE INTO DbQuote
 VALUES (?, ?, ?, ?, ?, ?);
 
