@@ -3,7 +3,8 @@ package com.rafag.stonks.android
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.rafag.stonks.Api
+import com.rafag.stonks.api.StonksHttpClient
+import com.rafag.stonks.data.search.SearchModule
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -28,7 +29,9 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 
         launch {
             val tv: TextView = findViewById(R.id.text_view)
-            tv.text = Api().search("Appl")
+            val httpClient = StonksHttpClient()
+            val searchRepository = SearchModule(httpClient).repository()
+            tv.text = searchRepository.searchRequest("Apple").toString()
         }
     }
 }
