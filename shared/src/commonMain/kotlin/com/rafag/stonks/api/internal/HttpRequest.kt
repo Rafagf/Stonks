@@ -9,4 +9,4 @@ internal data class HttpRequest<T>(
     val body: OutgoingContent = EmptyContent,
 )
 
-enum class Method { GET, POST, DELETE }
+internal enum class Method { GET, POST, DELETE }

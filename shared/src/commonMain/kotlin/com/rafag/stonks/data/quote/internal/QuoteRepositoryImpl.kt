@@ -7,7 +7,7 @@ import com.rafag.stonks.data.quote.Quote
 import com.rafag.stonks.data.quote.QuoteRepository
 import com.stonks.db.DbQuote
 
-class QuoteRepositoryImpl(
+internal class QuoteRepositoryImpl(
     private val httpClient: StonksHttpClient,
     private val persistence: QuotePersistence,
 ) : QuoteRepository {

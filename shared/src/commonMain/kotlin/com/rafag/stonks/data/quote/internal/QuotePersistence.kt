@@ -4,7 +4,7 @@ import com.rafag.stonks.api.internal.ApiQuoteResponse
 import com.stonks.db.DbQuote
 import com.stonks.db.StonksDatabase
 
-class QuotePersistence(
+internal class QuotePersistence(
     private val db: StonksDatabase,
 ) {
 

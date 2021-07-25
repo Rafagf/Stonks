@@ -1,8 +1,8 @@
 package com.rafag.stonks.data.search
 
-import com.rafag.stonks.api.internal.ApiSearchResponse
+import com.rafag.stonks.data.search.internal.Search
 
 interface SearchRepository {
 
-    suspend fun searchRequest(symbol: String): ApiSearchResponse
+    suspend fun searchRequest(symbol: String): Search
 }

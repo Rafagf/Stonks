@@ -13,15 +13,14 @@ internal object SearchApi {
 }
 
 @Serializable
-data class ApiSearchResponse(
+internal data class ApiSearchResponse(
     @SerialName("result") val result: List<ApiSearchItemResponse>,
 )
 
 @Serializable
-data class ApiSearchItemResponse(
+internal data class ApiSearchItemResponse(
     @SerialName("description") val description: String,
     @SerialName("displaySymbol") val displaySymbol: String,
     @SerialName("symbol") val symbol: String,
     @SerialName("type") val type: String,
-
-    )
+)

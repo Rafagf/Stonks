@@ -13,7 +13,7 @@ internal object QuoteApi {
 }
 
 @Serializable
-data class ApiQuoteResponse(
+internal data class ApiQuoteResponse(
     @SerialName("c") val current: Double,
     @SerialName("h") val high: Double,
     @SerialName("l") val low: Double,
