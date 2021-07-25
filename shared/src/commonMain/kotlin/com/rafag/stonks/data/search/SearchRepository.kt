@@ -1,6 +1,6 @@
 package com.rafag.stonks.data.search
 
-import com.rafag.stonks.api.ApiSearchResponse
+import com.rafag.stonks.api.internal.ApiSearchResponse
 
 interface SearchRepository {
 

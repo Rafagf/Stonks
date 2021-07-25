@@ -1,5 +1,6 @@
 package com.rafag.stonks.api
 
+import com.rafag.stonks.api.internal.HttpRequest
 import io.ktor.client.HttpClient
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.features.json.serializer.KotlinxSerializer

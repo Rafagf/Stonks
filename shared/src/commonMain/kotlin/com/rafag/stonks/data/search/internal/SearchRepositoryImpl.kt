@@ -1,7 +1,7 @@
 package com.rafag.stonks.data.search.internal
 
-import com.rafag.stonks.api.ApiSearchResponse
-import com.rafag.stonks.api.SearchApi
+import com.rafag.stonks.api.internal.ApiSearchResponse
+import com.rafag.stonks.api.internal.SearchApi
 import com.rafag.stonks.api.StonksHttpClient
 import com.rafag.stonks.data.search.SearchRepository
 

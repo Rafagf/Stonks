@@ -1,6 +1,6 @@
 package com.rafag.stonks.data.quote
 
-import com.rafag.stonks.api.ApiQuoteResponse
+import com.rafag.stonks.api.internal.ApiQuoteResponse
 
 interface QuoteRepository {
 

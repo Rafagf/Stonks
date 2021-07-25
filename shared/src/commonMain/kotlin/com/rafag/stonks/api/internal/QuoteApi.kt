@@ -1,10 +1,10 @@
-package com.rafag.stonks.api
+package com.rafag.stonks.api.internal
 
-import com.rafag.stonks.api.Method.*
+import com.rafag.stonks.api.internal.Method.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-object QuoteApi {
+internal object QuoteApi {
 
     fun quoteRequest(symbol: String) = HttpRequest<ApiQuoteResponse>(
         method = GET,
