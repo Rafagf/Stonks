@@ -1,0 +1,18 @@
+CREATE TABLE QuoteDb (
+  symbol TEXT NOT NULL PRIMARY KEY,
+  current REAL NOT NULL,
+  high REAL NOT NULL,
+  low REAL NOT NULL,
+  open REAL NOT NULL,
+  previousClose REAL NOT NULL
+);
+
+get:
+SELECT *
+FROM QuoteDb
+WHERE symbol = ?;
+
+upsert:
+INSERT OR REPLACE INTO QuoteDb
+VALUES (?, ?, ?, ?, ?, ?);
+
