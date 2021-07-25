@@ -9,7 +9,7 @@ internal class QuotePersistence(
 ) {
 
     fun upsert(symbol: String, apiResponse: ApiQuoteResponse) {
-        db.quoteQueries.upsert(
+        db.dbQuoteQueries.upsert(
             symbol = symbol,
             current = apiResponse.current,
             high = apiResponse.high,
@@ -20,6 +20,6 @@ internal class QuotePersistence(
     }
 
     fun get(symbol: String): DbQuote {
-        return db.quoteQueries.get(symbol).executeAsOne()
+        return db.dbQuoteQueries.get(symbol).executeAsOne()
     }
 }

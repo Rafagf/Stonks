@@ -4,6 +4,8 @@ import com.rafag.stonks.api.StonksHttpClient
 import com.rafag.stonks.api.internal.ApiSearchItemResponse
 import com.rafag.stonks.api.internal.ApiSearchResponse
 import com.rafag.stonks.api.internal.SearchApi
+import com.rafag.stonks.data.search.Search
+import com.rafag.stonks.data.search.SearchItem
 import com.rafag.stonks.data.search.SearchRepository
 
 internal class SearchRepositoryImpl(
@@ -24,15 +26,4 @@ private fun ApiSearchItemResponse.toModel() = SearchItem(
     displaySymbol = displaySymbol,
     symbol = symbol,
     type = type
-)
-
-data class Search(
-    val list: List<SearchItem>,
-)
-
-data class SearchItem(
-    val description: String,
-    val displaySymbol: String,
-    val symbol: String,
-    val type: String,
 )
