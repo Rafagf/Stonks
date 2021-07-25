@@ -4,6 +4,13 @@ plugins {
     kotlin("multiplatform")
     kotlin("plugin.serialization") version "1.5.0"
     id("com.android.library")
+    id("com.squareup.sqldelight")
+}
+
+sqldelight {
+    database("StonksDatabase") {
+        packageName = "com.stonks.db"
+    }
 }
 
 kotlin {
@@ -33,6 +40,8 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${properties["version.kotlinx.coroutines"]}")
                 //JSON
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:${properties["version.kotlinx.serialization"]}")
+                //SQL Delight
+                implementation("com.squareup.sqldelight:runtime:1.5.1")
             }
         }
         val commonTest by getting {
@@ -45,6 +54,8 @@ kotlin {
             dependencies {
                 //Network
                 implementation("io.ktor:ktor-client-okhttp:${properties["version.ktor"]}")
+                implementation("com.squareup.sqldelight:android-driver:1.5.1")
+
             }
         }
         val androidTest by getting {
@@ -57,6 +68,7 @@ kotlin {
             dependencies {
                 //Network
                 implementation("io.ktor:ktor-client-ios:${properties["version.ktor"]}")
+                implementation("com.squareup.sqldelight:native-driver:1.5.1")
             }
         }
         val iosTest by getting
