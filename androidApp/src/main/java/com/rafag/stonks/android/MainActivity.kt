@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
             val driver = DatabaseDriverFactory(applicationContext).createDriver()
             val db = StonksDatabase(driver)
 //            val searchRepository = SearchModule(httpClient).repository()
-            val quoteRepository = QuoteModule(httpClient, ).repository()
+            val quoteRepository = QuoteModule(httpClient, db).repository()
             tv.text = quoteRepository.quote("AAPL").toString()
         }
     }
