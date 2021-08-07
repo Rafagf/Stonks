@@ -1,0 +1,13 @@
+CREATE TABLE DbFavourites (
+  symbol TEXT NOT NULL PRIMARY KEY
+);
+
+save:
+SELECT *
+FROM DbFavourites
+WHERE symbol = ?;
+
+unsave:
+DELETE FROM DbFavourites
+WHERE symbol = ?;
+

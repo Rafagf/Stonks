@@ -1,5 +1,6 @@
 package com.rafag.stonks.data.favourites
 
-//TODO coming soon
-class FavouritesRepository {
+interface FavouritesRepository {
+    fun save(symbol: String)
+    fun unsave(symbol: String)
 }
