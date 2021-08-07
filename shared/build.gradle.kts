@@ -62,6 +62,7 @@ kotlin {
             dependencies {
                 implementation(kotlin("test-junit"))
                 implementation("junit:junit:4.13.2")
+                implementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
             }
         }
         val iosMain by getting {
