@@ -1,5 +1,6 @@
 package com.rafag.stonks.api
 
+import com.rafag.stonks.API_TOKEN
 import com.rafag.stonks.api.internal.HttpRequest
 import io.ktor.client.HttpClient
 import io.ktor.client.features.json.JsonFeature
@@ -12,14 +13,14 @@ import io.ktor.http.HttpMethod
 import kotlinx.serialization.json.Json
 
 private const val BASE_URL = "https://finnhub.io/api/v1/"
-private const val TOKEN = "&token=c1o8a9237fkqrr9sc3a0"
 
-class StonksHttpClient {
-
-    private val client: HttpClient = defaultHttpClient()
+class StonksHttpClient(
+    private val client: HttpClient = defaultHttpClient(),
+    private val baseUrl: String = BASE_URL,
+) {
 
     internal suspend inline fun <reified T> execute(request: HttpRequest<T>): T {
-        return client.request("$BASE_URL${request.url}$TOKEN") {
+        return client.request("$baseUrl${request.url}$API_TOKEN") {
             this.method = HttpMethod.Get
             this.body = request.body
         }
