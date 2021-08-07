@@ -3,9 +3,8 @@ CREATE TABLE DbFavourites (
 );
 
 save:
-SELECT *
-FROM DbFavourites
-WHERE symbol = ?;
+INSERT OR REPLACE INTO DbFavourites
+VALUES (?);
 
 unsave:
 DELETE FROM DbFavourites

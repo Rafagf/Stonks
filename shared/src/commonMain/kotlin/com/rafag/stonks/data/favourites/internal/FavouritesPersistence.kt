@@ -6,7 +6,7 @@ internal class FavouritesPersistence(
     private val db: StonksDatabase,
 ) {
 
-    fun save(symbol: String) = db.favouritesQuoteQueries.save(symbol).executeAsOne()
+    fun save(symbol: String) = db.favouritesQuoteQueries.save(symbol)
 
-    fun unsafe(symbol: String) = db.favouritesQuoteQueries.unsave(symbol)
+    fun unsave(symbol: String) = db.favouritesQuoteQueries.unsave(symbol)
 }

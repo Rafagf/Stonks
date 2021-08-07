@@ -63,6 +63,7 @@ kotlin {
                 implementation(kotlin("test-junit"))
                 implementation("junit:junit:4.13.2")
                 implementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
+                implementation("org.mockito:mockito-inline:3.11.2")
             }
         }
         val iosMain by getting {

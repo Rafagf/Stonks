@@ -10,18 +10,18 @@ internal class FavouritesRepositoryImpl(
         try {
             persistence.save(symbol)
         } catch (exception: Exception) {
-            throw CannotSaveFavourite(symbol, exception.cause)
+            throw CannotSaveFavourite(symbol, exception)
         }
     }
 
     override fun unsave(symbol: String) {
         try {
-            persistence.unsafe(symbol)
+            persistence.unsave(symbol)
         } catch (exception: Exception) {
-            throw CannotUnSaveFavourite(symbol, exception.cause)
+            throw CannotUnSaveFavourite(symbol, exception)
         }
     }
 
-    data class CannotSaveFavourite(val symbol: String, override val cause: Throwable?): Throwable("Symbol $symbol couldn't be saved. Cause: $cause")
-    data class CannotUnSaveFavourite(val symbol: String, override val cause: Throwable?): Throwable("Symbol $symbol couldn't be unsaved. Cause: $cause")
+    data class CannotSaveFavourite(val symbol: String, override val cause: Throwable): Throwable("Symbol $symbol couldn't be saved - $cause")
+    data class CannotUnSaveFavourite(val symbol: String, override val cause: Throwable): Throwable("Symbol $symbol couldn't be unsaved -  $cause")
 }
