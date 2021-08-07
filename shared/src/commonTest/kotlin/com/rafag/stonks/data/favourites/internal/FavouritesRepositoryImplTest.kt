@@ -5,6 +5,7 @@ import com.rafag.stonks.mock
 import com.rafag.stonks.runBlocking
 import com.rafag.stonks.whenever
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
 private const val A_SYMBOL = "AAPL"
@@ -14,6 +15,27 @@ class FavouritesRepositoryImplTest {
     private val persistence = mock<FavouritesPersistence>()
 
     private val repository = FavouritesRepositoryImpl(persistence)
+
+    @Test
+    fun `given success when getting all saved then return list`() {
+        val expectedList = listOf(A_SYMBOL)
+        whenever(persistence.getAll()).thenReturn(expectedList)
+
+        runBlocking {
+            val returnedList = repository.getAll()
+            assertEquals(returnedList, expectedList)
+        }
+    }
+
+    @Test
+    fun `given error when getting all saved then throw exception`() {
+        val throwable = RuntimeException("foo")
+        whenever(persistence.getAll()).thenThrow(throwable)
+
+        assertFailsWith<CantFetchFavourites> {
+            repository.getAll()
+        }
+    }
 
     @Test
     fun `given success when saving then do nothing`() {

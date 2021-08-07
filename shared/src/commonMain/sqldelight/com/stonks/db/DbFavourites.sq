@@ -2,6 +2,10 @@ CREATE TABLE DbFavourites (
   symbol TEXT NOT NULL PRIMARY KEY
 );
 
+getAll:
+SELECT *
+FROM DbFavourites;
+
 save:
 INSERT OR REPLACE INTO DbFavourites
 VALUES (?);
