@@ -6,6 +6,7 @@ interface QuoteRepository {
 }
 
 data class Quote(
+    val symbol: String,
     val current: Double,
     val high: Double,
     val low: Double,

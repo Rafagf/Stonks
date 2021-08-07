@@ -32,8 +32,8 @@ class FavouritesRepositoryImplTest {
         val throwable = RuntimeException("foo")
         whenever(persistence.getAll()).thenThrow(throwable)
 
-        assertFailsWith<CantFetchFavourites> {
-            repository.getAll()
+        assertFailsWith<ErrorFetchingFavourites> {
+            runBlocking { repository.getAll() }
         }
     }
 
@@ -49,7 +49,7 @@ class FavouritesRepositoryImplTest {
         val throwable = RuntimeException("foo")
         whenever(persistence.save(A_SYMBOL)).thenThrow(throwable)
 
-        assertFailsWith<CannotSaveFavourite> {
+        assertFailsWith<ErrorSavingFavourite> {
             runBlocking { repository.save(A_SYMBOL) }
         }
     }
@@ -64,8 +64,8 @@ class FavouritesRepositoryImplTest {
         val throwable = RuntimeException("foo")
         whenever(persistence.unsave(A_SYMBOL)).thenThrow(throwable)
 
-        assertFailsWith<CannotUnSaveFavourite> {
-            repository.unsave(A_SYMBOL)
+        assertFailsWith<ErrorUnSaveFavourite> {
+            runBlocking { repository.unsave(A_SYMBOL) }
         }
     }
 }

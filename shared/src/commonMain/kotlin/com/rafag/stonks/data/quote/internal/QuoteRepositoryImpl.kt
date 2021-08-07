@@ -23,13 +23,22 @@ internal class QuoteRepositoryImpl(
     private suspend fun fromApi(symbol: String): Quote {
         val apiResponse = httpClient.execute(QuoteApi.quoteRequest(symbol))
         persistence.upsert(symbol, apiResponse)
-        return apiResponse.toModel()
+        return apiResponse.toModel(symbol)
     }
 
-    private fun fromDb(symbol: String) = persistence.get(symbol).toModel()
+    private fun fromDb(symbol: String): Quote {
+        return try {
+            persistence.get(symbol).toModel()
+        } catch (exception: Exception) {
+            throw ErrorFetchingQuote(symbol, exception)
+        }
+    }
 }
 
-private fun ApiQuoteResponse.toModel() = Quote(
+data class ErrorFetchingQuote(val symbol: String, override val cause: Throwable) : Throwable("Could not fetch favourites -  $cause")
+
+private fun ApiQuoteResponse.toModel(symbol: String) = Quote(
+    symbol = symbol,
     current = current,
     high = high,
     low = low,
@@ -38,6 +47,7 @@ private fun ApiQuoteResponse.toModel() = Quote(
 )
 
 private fun DbQuote.toModel() = Quote(
+    symbol = symbol,
     current = current,
     high = high,
     low = low,
