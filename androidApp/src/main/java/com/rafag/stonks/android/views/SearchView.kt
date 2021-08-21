@@ -1,4 +1,4 @@
-package com.rafag.stonks.android
+package com.rafag.stonks.android.views
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding

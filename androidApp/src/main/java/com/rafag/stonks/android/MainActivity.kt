@@ -1,14 +1,10 @@
 package com.rafag.stonks.android
 
 import android.os.Bundle
-import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.Scaffold
-import com.rafag.stonks.api.StonksHttpClient
-import com.rafag.stonks.data.quote.QuoteModule
-import com.rafag.stonks.db.DatabaseDriverFactory
-import com.stonks.db.StonksDatabase
+import com.rafag.stonks.android.views.TopBar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -35,7 +31,7 @@ class MainActivity : ComponentActivity(), CoroutineScope {
             Scaffold(
                 topBar = { TopBar() },
             ) {
-                /* Add code later */
+
             }
         }
         launch {
