@@ -3,6 +3,7 @@
   package="com.rafag.stonks.android">
   <uses-permission android:name="android.permission.INTERNET" />
   <application
+    android:name=".StonksApplication"
     android:allowBackup="false"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">

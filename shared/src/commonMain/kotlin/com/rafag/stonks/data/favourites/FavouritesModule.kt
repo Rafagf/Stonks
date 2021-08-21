@@ -7,7 +7,7 @@ import com.rafag.stonks.data.quote.internal.QuotePersistence
 import com.stonks.db.StonksDatabase
 
 class FavouritesModule(
-    private val httpClient: StonksHttpClient,
+    private val httpClient: StonksHttpClient = StonksHttpClient(),
     private val db: StonksDatabase,
 ) {
 
