@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.material.Scaffold
 import com.rafag.stonks.api.StonksHttpClient
 import com.rafag.stonks.data.quote.QuoteModule
 import com.rafag.stonks.db.DatabaseDriverFactory
@@ -31,7 +32,11 @@ class MainActivity : ComponentActivity(), CoroutineScope {
         setContentView(R.layout.activity_main)
 //        val database = StonksDatabase(databaseDriverFactory.createDriver())
         setContent {
-            foo()
+            Scaffold(
+                topBar = { TopBar() },
+            ) {
+                /* Add code later */
+            }
         }
         launch {
 
