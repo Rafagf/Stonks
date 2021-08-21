@@ -1,6 +1,5 @@
 package com.rafag.stonks.android.views
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -16,21 +15,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun StonkListItem(stonk: StonkState, onItemClick: (StonkState) -> Unit) {
+fun StonkListItem(item: StonkItemState, onItemClick: (StonkItemState) -> Unit) {
     Row(
         modifier = Modifier
-            .clickable(onClick = { onItemClick(stonk) })
-            .background(Color.Blue)
+            .clickable(onClick = { onItemClick(item) })
             .fillMaxWidth()
             .padding(PaddingValues(8.dp, 16.dp))
     ) {
-        Box(modifier = Modifier.weight(0.3f)) { Text(text = stonk.name, fontSize = 18.sp, color = Color.White) }
-        Box(modifier = Modifier.weight(0.1f)) { Text(text = stonk.price, fontSize = 18.sp, color = Color.White) }
-        Box(modifier = Modifier.weight(0.1f)) { Text(text = stonk.change, fontSize = 18.sp, color = Color.White) }
+        Box(modifier = Modifier.weight(0.3f)) { Text(text = item.name, fontSize = 18.sp, color = Color.Black) }
+        Box(modifier = Modifier.weight(0.1f)) { Text(text = item.price, fontSize = 18.sp, color = Color.Black) }
+        Box(modifier = Modifier.weight(0.1f)) { Text(text = item.change, fontSize = 18.sp, color = Color.Black) }
     }
 }
 
-data class StonkState(
+data class StonkItemState(
     val name: String,
     val price: String,
     val change: String
@@ -39,7 +37,7 @@ data class StonkState(
 @Preview(showBackground = true)
 @Composable
 fun StonkListItemPreview() {
-    StonkListItem(stonk = StonkState(
+    StonkListItem(item = StonkItemState(
         "Apple", "234.34", "-0.32%"
     ), onItemClick = { })
 }

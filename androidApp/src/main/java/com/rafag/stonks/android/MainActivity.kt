@@ -3,45 +3,33 @@ package com.rafag.stonks.android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.Scaffold
-import com.rafag.stonks.android.views.TopBar
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import kotlin.coroutines.CoroutineContext
+import androidx.activity.viewModels
+import com.rafag.stonks.android.views.Actions
+import com.rafag.stonks.android.views.SearchScreen
 
-class MainActivity : ComponentActivity(), CoroutineScope {
+class MainActivity : ComponentActivity() {
 
-    private var job: Job = Job()
-
-    override val coroutineContext: CoroutineContext
-        get() = Dispatchers.Main + job
-
-    override fun onDestroy() {
-        super.onDestroy()
-        job.cancel()
-    }
+    private val vm: SearchViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-//        val database = StonksDatabase(databaseDriverFactory.createDriver())
         setContent {
-            Scaffold(
-                topBar = { TopBar() },
-            ) {
-
-            }
+            //TODO to be moved into a different screen or similar, living under a floating search button
+            SearchScreen(vm, object : Actions {
+                override fun onSearchQueryChanged(query: String) {
+                    vm.search(query)
+                }
+            })
         }
-        launch {
+//        launch {
 
-            //do some sort of DI with all these dependencies
+        //do some sort of DI with all these dependencies
 //            val httpClient = StonksHttpClient()
+        //        val database = StonksDatabase(databaseDriverFactory.createDriver())
 //            val driver = DatabaseDriverFactory(applicationContext).createDriver()
 //            val db = StonksDatabase(driver)
 //            val searchRepository = SearchModule(httpClient).repository()
 //            val quoteRepository = QuoteModule(db = db).repository()
-        }
+//        }
     }
 }

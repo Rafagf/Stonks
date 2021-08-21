@@ -25,12 +25,17 @@ import androidx.compose.ui.unit.sp
 
 //Kudos to https://johncodeos.com/how-to-add-search-in-list-with-jetpack-compose/
 
+interface Actions {
+    fun onSearchQueryChanged(query: String)
+}
+
 @Composable
-fun SearchView(state: MutableState<TextFieldValue>) {
+fun SearchView(state: MutableState<TextFieldValue>, actions: Actions) {
     TextField(
         value = state.value,
         onValueChange = { value ->
             state.value = value
+            actions.onSearchQueryChanged(value.text)
         },
         modifier = Modifier.fillMaxWidth(),
         textStyle = TextStyle(color = Color.White, fontSize = 18.sp),
@@ -77,5 +82,8 @@ fun SearchView(state: MutableState<TextFieldValue>) {
 @Composable
 fun SearchViewPreview() {
     val textState = remember { mutableStateOf(TextFieldValue("")) }
-    SearchView(textState)
+    SearchView(textState, object : Actions {
+        override fun onSearchQueryChanged(query: String) {
+        }
+    })
 }

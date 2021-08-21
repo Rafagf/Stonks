@@ -4,21 +4,18 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
+import com.rafag.stonks.android.SearchState
 
 @Composable
-fun StonkList(stonks: List<StonkState>) {
+fun SearchView(state: SearchState) {
     LazyColumn(modifier = Modifier.fillMaxWidth()) {
-        items(stonks) { stonk ->
+        items(state.stonks) { stonk ->
             StonkListItem(
-                stonk = stonk,
+                item = stonk,
                 onItemClick = { selectedStonk ->
-                    /* Add code later */
+                    //todo
                 }
             )
         }
@@ -28,16 +25,16 @@ fun StonkList(stonks: List<StonkState>) {
 @Preview(showBackground = true)
 @Composable
 fun StonkListPreview() {
-    StonkList(dummyData)
+    SearchView(SearchState(dummyData))
 }
 
 val dummyData = listOf(
-    StonkState("Apple", "234", "4%"),
-    StonkState("Amazon", "234", "4%"),
-    StonkState("Google", "234", "4%"),
-    StonkState("Googla", "234", "4%"),
-    StonkState("Testla", "234", "4%"),
-    StonkState("Testlapu", "234", "4%"),
-    StonkState("Tiolo", "234", "4%"),
-    StonkState("Alibabo", "234", "4%"),
+    StonkItemState("Apple", "234", "4%"),
+    StonkItemState("Amazon", "234", "4%"),
+    StonkItemState("Google", "234", "4%"),
+    StonkItemState("Googla", "234", "4%"),
+    StonkItemState("Testla", "234", "4%"),
+    StonkItemState("Testlapu", "234", "4%"),
+    StonkItemState("Tiolo", "234", "4%"),
+    StonkItemState("Alibabo", "234", "4%"),
 )
