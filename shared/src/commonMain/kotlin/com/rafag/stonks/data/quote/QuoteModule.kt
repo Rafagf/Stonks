@@ -6,8 +6,8 @@ import com.rafag.stonks.data.quote.internal.QuoteRepositoryImpl
 import com.stonks.db.StonksDatabase
 
 class QuoteModule(
-    private val httpClient: StonksHttpClient,
-    private val db: StonksDatabase,
+    private val httpClient: StonksHttpClient = StonksHttpClient(),
+    val db: StonksDatabase,
 ) {
 
     fun repository(): QuoteRepository {

@@ -2,7 +2,8 @@ package com.rafag.stonks.android
 
 import android.os.Bundle
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import com.rafag.stonks.api.StonksHttpClient
 import com.rafag.stonks.data.quote.QuoteModule
 import com.rafag.stonks.db.DatabaseDriverFactory
@@ -13,7 +14,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-class MainActivity : AppCompatActivity(), CoroutineScope {
+class MainActivity : ComponentActivity(), CoroutineScope {
 
     private var job: Job = Job()
 
@@ -29,16 +30,17 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 //        val database = StonksDatabase(databaseDriverFactory.createDriver())
-
+        setContent {
+            foo()
+        }
         launch {
-            val tv: TextView = findViewById(R.id.text_view)
-            val httpClient = StonksHttpClient()
+
             //do some sort of DI with all these dependencies
-            val driver = DatabaseDriverFactory(applicationContext).createDriver()
-            val db = StonksDatabase(driver)
+//            val httpClient = StonksHttpClient()
+//            val driver = DatabaseDriverFactory(applicationContext).createDriver()
+//            val db = StonksDatabase(driver)
 //            val searchRepository = SearchModule(httpClient).repository()
-            val quoteRepository = QuoteModule(httpClient, db).repository()
-            tv.text = quoteRepository.quote("AAPL").toString()
+//            val quoteRepository = QuoteModule(db = db).repository()
         }
     }
 }
