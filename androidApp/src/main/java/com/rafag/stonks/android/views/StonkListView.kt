@@ -28,7 +28,7 @@ fun StonkListPreview() {
     SearchView(SearchState(dummyData))
 }
 
-val dummyData = listOf(
+private val dummyData = listOf(
     StonkItemState("Apple", "234", "4%"),
     StonkItemState("Amazon", "234", "4%"),
     StonkItemState("Google", "234", "4%"),

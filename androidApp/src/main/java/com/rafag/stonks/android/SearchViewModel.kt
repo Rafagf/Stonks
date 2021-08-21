@@ -13,9 +13,6 @@ class SearchViewModel(private val searchRepository: SearchRepository) : ViewMode
 
     fun search(query: String) {
         viewModelScope.launch {
-//            val filtered = dummyData.filter {
-//                it.name.toLowerCase().startsWith(query.toLowerCase())
-//            }
             // todo change to proper mapping, only quick hacking here - also,
             // Search values are completely different to StonkItemState,
             // maybe we don't need to show the price here!
