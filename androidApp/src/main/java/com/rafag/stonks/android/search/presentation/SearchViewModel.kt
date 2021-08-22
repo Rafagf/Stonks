@@ -1,9 +1,9 @@
-package com.rafag.stonks.android
+package com.rafag.stonks.android.search.presentation
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rafag.stonks.android.views.StonkItemState
+import com.rafag.stonks.android.search.view.StonkItemState
 import com.rafag.stonks.data.search.SearchRepository
 import kotlinx.coroutines.launch
 

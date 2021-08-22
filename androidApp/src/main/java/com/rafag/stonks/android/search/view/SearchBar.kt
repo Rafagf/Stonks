@@ -1,4 +1,4 @@
-package com.rafag.stonks.android.views
+package com.rafag.stonks.android.search.view
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -30,7 +30,7 @@ interface Actions {
 }
 
 @Composable
-fun SearchView(state: MutableState<TextFieldValue>, actions: Actions) {
+fun StonkList(state: MutableState<TextFieldValue>, actions: Actions) {
     TextField(
         value = state.value,
         onValueChange = { value ->
@@ -82,7 +82,7 @@ fun SearchView(state: MutableState<TextFieldValue>, actions: Actions) {
 @Composable
 fun SearchViewPreview() {
     val textState = remember { mutableStateOf(TextFieldValue("")) }
-    SearchView(textState, object : Actions {
+    StonkList(textState, object : Actions {
         override fun onSearchQueryChanged(query: String) {
         }
     })

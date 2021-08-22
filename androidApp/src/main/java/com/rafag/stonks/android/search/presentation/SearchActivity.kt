@@ -1,12 +1,13 @@
-package com.rafag.stonks.android
+package com.rafag.stonks.android.search.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.rafag.stonks.android.views.Actions
-import com.rafag.stonks.android.views.SearchScreen
+import com.rafag.stonks.android.search.view.Actions
+import com.rafag.stonks.android.search.view.SearchScreen
+import com.rafag.stonks.android.searchRepository
 
-class MainActivity : ComponentActivity() {
+class SearchActivity : ComponentActivity() {
 
     private lateinit var searchViewModel: SearchViewModel
 

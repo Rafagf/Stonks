@@ -1,4 +1,4 @@
-package com.rafag.stonks.android.views
+package com.rafag.stonks.android.search.view
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
@@ -6,10 +6,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.rafag.stonks.android.SearchState
+import com.rafag.stonks.android.search.presentation.SearchState
 
 @Composable
-fun SearchView(state: SearchState) {
+fun StonkList(state: SearchState) {
     LazyColumn(modifier = Modifier.fillMaxWidth()) {
         items(state.stonks) { stonk ->
             StonkListItem(
@@ -25,7 +25,7 @@ fun SearchView(state: SearchState) {
 @Preview(showBackground = true)
 @Composable
 fun StonkListPreview() {
-    SearchView(SearchState(dummyData))
+    StonkList(SearchState(dummyData))
 }
 
 private val dummyData = listOf(

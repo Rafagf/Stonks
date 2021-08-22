@@ -1,4 +1,4 @@
-package com.rafag.stonks.android.views
+package com.rafag.stonks.android.search.view
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
@@ -6,14 +6,14 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.text.input.TextFieldValue
-import com.rafag.stonks.android.SearchViewModel
+import com.rafag.stonks.android.search.presentation.SearchViewModel
 
 @Composable
 fun SearchScreen(searchViewModel: SearchViewModel, actions: Actions) {
     val textState = remember { mutableStateOf(TextFieldValue("")) }
 
     Column {
-        SearchView(textState, actions)
-        searchViewModel.state.observeAsState().value?.let { SearchView(it) }
+        StonkList(textState, actions)
+        searchViewModel.state.observeAsState().value?.let { StonkList(it) }
     }
 }
