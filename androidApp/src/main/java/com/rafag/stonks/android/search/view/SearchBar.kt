@@ -30,7 +30,7 @@ interface Actions {
 }
 
 @Composable
-fun StonkList(state: MutableState<TextFieldValue>, actions: Actions) {
+fun SearchStonkList(state: MutableState<TextFieldValue>, actions: Actions) {
     TextField(
         value = state.value,
         onValueChange = { value ->
@@ -82,7 +82,7 @@ fun StonkList(state: MutableState<TextFieldValue>, actions: Actions) {
 @Composable
 fun SearchViewPreview() {
     val textState = remember { mutableStateOf(TextFieldValue("")) }
-    StonkList(textState, object : Actions {
+    SearchStonkList(textState, object : Actions {
         override fun onSearchQueryChanged(query: String) {
         }
     })

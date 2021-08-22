@@ -15,29 +15,29 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun StonkListItem(item: StonkItemState, onItemClick: (StonkItemState) -> Unit) {
+fun SearchStonkListItem(state: SearchStonkItemState, onToggleFaved: (SearchStonkItemState) -> Unit) {
     Row(
         modifier = Modifier
-            .clickable(onClick = { onItemClick(item) })
+            .clickable(onClick = { onToggleFaved(state) })
             .fillMaxWidth()
             .padding(PaddingValues(8.dp, 16.dp))
     ) {
-        Box(modifier = Modifier.weight(0.3f)) { Text(text = item.name, fontSize = 18.sp, color = Color.Black) }
-        Box(modifier = Modifier.weight(0.1f)) { Text(text = item.price, fontSize = 18.sp, color = Color.Black) }
-        Box(modifier = Modifier.weight(0.1f)) { Text(text = item.change, fontSize = 18.sp, color = Color.Black) }
+        Box(modifier = Modifier.weight(0.3f)) { Text(text = state.name, fontSize = 18.sp, color = Color.Black) }
+        Box(modifier = Modifier.weight(0.1f)) { Text(text = state.price, fontSize = 18.sp, color = Color.Black) }
+        Box(modifier = Modifier.weight(0.1f)) { Text(text = state.change, fontSize = 18.sp, color = Color.Black) }
     }
 }
 
-data class StonkItemState(
+data class SearchStonkItemState(
     val name: String,
-    val price: String,
-    val change: String
+    val symbol: String,
+    val faved: Boolean,
 )
 
 @Preview(showBackground = true)
 @Composable
 fun StonkListItemPreview() {
-    StonkListItem(item = StonkItemState(
-        "Apple", "234.34", "-0.32%"
-    ), onItemClick = { })
+    SearchStonkListItem(state = SearchStonkItemState(
+        "Apple", "AAPL", true
+    ), onToggleFaved = { })
 }

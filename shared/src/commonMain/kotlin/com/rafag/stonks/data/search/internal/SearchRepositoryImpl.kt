@@ -22,7 +22,7 @@ private fun ApiSearchResponse.toModel() = Search(
 )
 
 private fun ApiSearchItemResponse.toModel() = SearchItem(
-    description = description,
+    name = description,
     displaySymbol = displaySymbol,
     symbol = symbol,
     type = type

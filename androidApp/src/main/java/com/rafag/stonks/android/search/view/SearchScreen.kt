@@ -13,7 +13,7 @@ fun SearchScreen(searchViewModel: SearchViewModel, actions: Actions) {
     val textState = remember { mutableStateOf(TextFieldValue("")) }
 
     Column {
-        StonkList(textState, actions)
-        searchViewModel.state.observeAsState().value?.let { StonkList(it) }
+        SearchStonkList(textState, actions)
+        searchViewModel.state.observeAsState().value?.let { SearchStonkList(it) }
     }
 }

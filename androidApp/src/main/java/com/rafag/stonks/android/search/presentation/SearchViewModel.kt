@@ -3,28 +3,28 @@ package com.rafag.stonks.android.search.presentation
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rafag.stonks.android.search.view.StonkItemState
-import com.rafag.stonks.data.search.SearchRepository
+import com.rafag.stonks.android.search.SearchStonksUseCase
+import com.rafag.stonks.android.search.StonkSearch
+import com.rafag.stonks.android.search.view.SearchStonkItemState
 import kotlinx.coroutines.launch
 
-class SearchViewModel(private val searchRepository: SearchRepository) : ViewModel() {
+class SearchViewModel(private val searchUseCase: SearchStonksUseCase) : ViewModel() {
 
     val state: MutableLiveData<SearchState> = MutableLiveData()
 
     fun search(query: String) {
         viewModelScope.launch {
-            // todo change to proper mapping, only quick hacking here - also,
-            // Search values are completely different to StonkItemState,
-            // maybe we don't need to show the price here!
-            val search = searchRepository.searchRequest(query)
-            val filteredList = search.list.map {
-                StonkItemState(name = it.displaySymbol, price = "foo", "faa")
-            }
-            state.value = SearchState(filteredList)
+            state.value = SearchState(searchUseCase.search(query).map { it.toSearchStonkItemState() })
         }
     }
+
+    private fun StonkSearch.toSearchStonkItemState() = SearchStonkItemState(
+        name = name,
+        symbol = symbol,
+        faved = faved
+    )
 }
 
 data class SearchState(
-    val stonks: List<StonkItemState>
+    val searchStonks: List<SearchStonkItemState>
 )

@@ -10,7 +10,7 @@ data class Search(
 )
 
 data class SearchItem(
-    val description: String,
+    val name: String,
     val displaySymbol: String,
     val symbol: String,
     val type: String,
