@@ -29,12 +29,6 @@ fun StonkListPreview() {
 }
 
 private val dummyData = listOf(
-    SearchStonkItemState("Apple", "234", "4%"),
-    SearchStonkItemState("Amazon", "234", "4%"),
-    SearchStonkItemState("Google", "234", "4%"),
-    SearchStonkItemState("Googla", "234", "4%"),
-    SearchStonkItemState("Testla", "234", "4%"),
-    SearchStonkItemState("Testlapu", "234", "4%"),
-    SearchStonkItemState("Tiolo", "234", "4%"),
-    SearchStonkItemState("Alibabo", "234", "4%"),
+    SearchStonkItemState("Apple", "AAPL", true),
+    SearchStonkItemState("Apple", "AAPL", false),
 )

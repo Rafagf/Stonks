@@ -1,6 +1,5 @@
-package com.rafag.stonks.android
+package com.rafag.stonks.android.di
 
-import android.app.Activity
 import android.content.Context
 import com.rafag.stonks.data.favourites.FavouritesModule
 import com.rafag.stonks.data.quote.QuoteModule
@@ -17,7 +16,3 @@ class RepositoryProvider(applicationContext: Context) {
     val favouritesRepository = FavouritesModule(db = db).repository()
     val searchRepository = SearchModule().repository()
 }
-
-fun Activity.quoteRepository() = (application as StonksApplication).repositoryProvider.searchRepository
-fun Activity.favouritesRepository() = (application as StonksApplication).repositoryProvider.searchRepository
-fun Activity.searchRepository() = (application as StonksApplication).repositoryProvider.searchRepository
