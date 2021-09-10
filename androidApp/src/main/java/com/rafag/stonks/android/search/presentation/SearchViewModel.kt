@@ -3,13 +3,17 @@ package com.rafag.stonks.android.search.presentation
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.rafag.stonks.android.search.domain.ToggleFavouriteUseCase
 import com.rafag.stonks.android.search.domain.SearchStonksUseCase
 import com.rafag.stonks.android.search.domain.StonkSearch
 import com.rafag.stonks.android.search.view.SearchStonkItemState
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class SearchViewModel(private val searchUseCase: SearchStonksUseCase) : ViewModel() {
+class SearchViewModel(
+    private val searchUseCase: SearchStonksUseCase,
+    private val toggleFavouriteUseCase: ToggleFavouriteUseCase,
+    ) : ViewModel() {
 
     val state: MutableLiveData<SearchState> = MutableLiveData()
 
@@ -22,6 +26,18 @@ class SearchViewModel(private val searchUseCase: SearchStonksUseCase) : ViewMode
                     }
                 )
             }
+        }
+    }
+
+    fun onStonkFaved(item: SearchStonkItemState) {
+        viewModelScope.launch {
+            toggleFavouriteUseCase.saved(item.symbol)
+        }
+    }
+
+    fun onStonkUnfaved(item: SearchStonkItemState) {
+        viewModelScope.launch {
+            toggleFavouriteUseCase.unsaved(item.symbol)
         }
     }
 

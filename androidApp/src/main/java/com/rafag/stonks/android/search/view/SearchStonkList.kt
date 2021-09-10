@@ -9,14 +9,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.rafag.stonks.android.search.presentation.SearchState
 
 @Composable
-fun SearchStonkList(state: SearchState) {
+fun SearchStonkList(state: SearchState, actions: SearchScreenActions) {
     LazyColumn(modifier = Modifier.fillMaxWidth()) {
         items(state.searchStonks) { stonk ->
             SearchStonkListItem(
                 state = stonk,
-                onToggleFaved = { selectedStonk ->
-                    //todo
-                }
+                onToggleFaved = actions::onStonkFaved,
+                onToggleUnfaved = actions::onStonkUnfaved,
             )
         }
     }
@@ -25,7 +24,19 @@ fun SearchStonkList(state: SearchState) {
 @Preview(showBackground = true)
 @Composable
 fun StonkListPreview() {
-    SearchStonkList(SearchState(dummyData))
+    SearchStonkList(SearchState(dummyData), object : SearchScreenActions {
+        override fun onSearchQueryChanged(query: String) {
+            //no op
+        }
+
+        override fun onStonkFaved(item: SearchStonkItemState) {
+            //no op
+        }
+
+        override fun onStonkUnfaved(item: SearchStonkItemState) {
+            //no op
+        }
+    })
 }
 
 private val dummyData = listOf(

@@ -8,12 +8,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.text.input.TextFieldValue
 import com.rafag.stonks.android.search.presentation.SearchViewModel
 
+interface SearchScreenActions {
+    fun onSearchQueryChanged(query: String)
+    fun onStonkFaved(item: SearchStonkItemState)
+    fun onStonkUnfaved(item: SearchStonkItemState)
+}
+
 @Composable
-fun SearchScreen(searchViewModel: SearchViewModel, actions: Actions) {
+fun SearchScreen(searchViewModel: SearchViewModel, actions: SearchScreenActions) {
     val textState = remember { mutableStateOf(TextFieldValue("")) }
 
     Column {
-        SearchStonkList(textState, actions)
-        searchViewModel.state.observeAsState().value?.let { SearchStonkList(it) }
+        SearchBar(textState, actions::onSearchQueryChanged)
+        searchViewModel.state.observeAsState().value?.let { SearchStonkList(it, actions) }
     }
 }

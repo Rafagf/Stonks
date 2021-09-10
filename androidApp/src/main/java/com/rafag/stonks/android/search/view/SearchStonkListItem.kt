@@ -19,17 +19,25 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun SearchStonkListItem(state: SearchStonkItemState, onToggleFaved: (SearchStonkItemState) -> Unit) {
+fun SearchStonkListItem(
+    state: SearchStonkItemState,
+    onToggleFaved: (SearchStonkItemState) -> Unit,
+    onToggleUnfaved: (SearchStonkItemState) -> Unit
+) {
     Row(
         modifier = Modifier
-            .clickable(onClick = { onToggleFaved(state) })
+            .clickable(onClick = {
+                if (state.faved) onToggleUnfaved(state) else onToggleFaved(state)
+            })
             .fillMaxWidth()
             .padding(vertical = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Column(modifier = Modifier
-            .weight(0.8f)
-            .padding(16.dp)) {
+        Column(
+            modifier = Modifier
+                .weight(0.8f)
+                .padding(16.dp)
+        ) {
             Text(text = state.name, fontSize = 18.sp, color = Color.Black)
             Text(text = state.symbol, fontSize = 14.sp, color = Color.Black)
         }
@@ -73,7 +81,7 @@ data class SearchStonkItemState(
 fun FavedStonkListItemPreview() {
     SearchStonkListItem(state = SearchStonkItemState(
         "Apple", "AAPL", true
-    ), onToggleFaved = { })
+    ), onToggleFaved = { }, onToggleUnfaved = { })
 }
 
 @Preview(showBackground = true)
@@ -81,5 +89,5 @@ fun FavedStonkListItemPreview() {
 fun NotFavedStonkListItemPreview() {
     SearchStonkListItem(state = SearchStonkItemState(
         "Apple", "AAPL", false
-    ), onToggleFaved = { })
+    ), onToggleFaved = { }, onToggleUnfaved = { })
 }

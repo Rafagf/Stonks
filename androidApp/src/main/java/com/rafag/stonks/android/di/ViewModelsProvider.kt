@@ -6,7 +6,10 @@ import com.rafag.stonks.android.search.presentation.SearchViewModel
 
 class ViewModelsProvider(useCasesProvider: UseCasesProvider) {
 
-    val searchViewModel = SearchViewModel(useCasesProvider.searchStonksUseCase)
+    val searchViewModel = SearchViewModel(
+        searchUseCase = useCasesProvider.searchStonksUseCase,
+        toggleFavouriteUseCase = useCasesProvider.toggleFavouriteUseCase,
+    )
 }
 
 fun Activity.searchViewModel() = (application as StonksApplication).viewModelsProvider.searchViewModel
