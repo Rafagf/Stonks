@@ -42,6 +42,7 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:${properties["version.kotlinx.serialization"]}")
                 //SQL Delight
                 implementation("com.squareup.sqldelight:runtime:1.5.1")
+                implementation("com.squareup.sqldelight:coroutines-extensions:1.5.0")
             }
         }
         val commonTest by getting {

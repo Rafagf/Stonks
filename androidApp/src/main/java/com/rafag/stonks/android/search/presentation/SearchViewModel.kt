@@ -3,9 +3,9 @@ package com.rafag.stonks.android.search.presentation
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rafag.stonks.android.search.domain.ToggleFavouriteUseCase
 import com.rafag.stonks.android.search.domain.SearchStonksUseCase
 import com.rafag.stonks.android.search.domain.StonkSearch
+import com.rafag.stonks.android.search.domain.ToggleFavouriteUseCase
 import com.rafag.stonks.android.search.view.SearchStonkItemState
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch

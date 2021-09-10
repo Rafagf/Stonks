@@ -1,12 +1,13 @@
 package com.rafag.stonks.data.favourites.internal
 
 import com.rafag.stonks.data.favourites.FavouritesRepository
+import kotlinx.coroutines.flow.Flow
 
 internal class FavouritesRepositoryImpl(
     private val persistence: FavouritesPersistence
 ) : FavouritesRepository {
 
-    override suspend fun getAll(): List<String> {
+    override suspend fun getAll(): Flow<List<String>> {
         return try {
             persistence.getAll()
         } catch (exception: Exception) {
