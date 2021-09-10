@@ -29,17 +29,17 @@ fun StonkListPreview() {
             //no op
         }
 
-        override fun onStonkFaved(item: SearchStonkItemState) {
+        override fun onStonkFaved(item: SearchStonkUiItem) {
             //no op
         }
 
-        override fun onStonkUnfaved(item: SearchStonkItemState) {
+        override fun onStonkUnfaved(item: SearchStonkUiItem) {
             //no op
         }
     })
 }
 
 private val dummyData = listOf(
-    SearchStonkItemState("Apple", "AAPL", true),
-    SearchStonkItemState("Apple", "AAPL", false),
+    SearchStonkUiItem("Apple", "AAPL", true),
+    SearchStonkUiItem("Apple", "AAPL", false),
 )

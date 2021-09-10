@@ -10,8 +10,8 @@ import com.rafag.stonks.android.search.presentation.SearchViewModel
 
 interface SearchScreenActions {
     fun onSearchQueryChanged(query: String)
-    fun onStonkFaved(item: SearchStonkItemState)
-    fun onStonkUnfaved(item: SearchStonkItemState)
+    fun onStonkFaved(item: SearchStonkUiItem)
+    fun onStonkUnfaved(item: SearchStonkUiItem)
 }
 
 @Composable

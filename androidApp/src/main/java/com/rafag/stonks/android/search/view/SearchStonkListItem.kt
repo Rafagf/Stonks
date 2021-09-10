@@ -20,9 +20,9 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun SearchStonkListItem(
-    state: SearchStonkItemState,
-    onToggleFaved: (SearchStonkItemState) -> Unit,
-    onToggleUnfaved: (SearchStonkItemState) -> Unit
+    state: SearchStonkUiItem,
+    onToggleFaved: (SearchStonkUiItem) -> Unit,
+    onToggleUnfaved: (SearchStonkUiItem) -> Unit
 ) {
     Row(
         modifier = Modifier
@@ -70,7 +70,7 @@ private fun notFaved() {
     )
 }
 
-data class SearchStonkItemState(
+data class SearchStonkUiItem(
     val name: String,
     val symbol: String,
     val faved: Boolean,
@@ -79,7 +79,7 @@ data class SearchStonkItemState(
 @Preview(showBackground = true)
 @Composable
 fun FavedStonkListItemPreview() {
-    SearchStonkListItem(state = SearchStonkItemState(
+    SearchStonkListItem(state = SearchStonkUiItem(
         "Apple", "AAPL", true
     ), onToggleFaved = { }, onToggleUnfaved = { })
 }
@@ -87,7 +87,7 @@ fun FavedStonkListItemPreview() {
 @Preview(showBackground = true)
 @Composable
 fun NotFavedStonkListItemPreview() {
-    SearchStonkListItem(state = SearchStonkItemState(
+    SearchStonkListItem(state = SearchStonkUiItem(
         "Apple", "AAPL", false
     ), onToggleFaved = { }, onToggleUnfaved = { })
 }

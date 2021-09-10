@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import com.rafag.stonks.android.di.searchViewModel
 import com.rafag.stonks.android.search.view.SearchScreen
 import com.rafag.stonks.android.search.view.SearchScreenActions
-import com.rafag.stonks.android.search.view.SearchStonkItemState
+import com.rafag.stonks.android.search.view.SearchStonkUiItem
 
 class SearchActivity : ComponentActivity() {
 
@@ -21,11 +21,11 @@ class SearchActivity : ComponentActivity() {
                     searchViewModel.search(query)
                 }
 
-                override fun onStonkFaved(item: SearchStonkItemState) {
+                override fun onStonkFaved(item: SearchStonkUiItem) {
                     searchViewModel.onStonkFaved(item)
                 }
 
-                override fun onStonkUnfaved(item: SearchStonkItemState) {
+                override fun onStonkUnfaved(item: SearchStonkUiItem) {
                     searchViewModel.onStonkUnfaved(item)
                 }
             })

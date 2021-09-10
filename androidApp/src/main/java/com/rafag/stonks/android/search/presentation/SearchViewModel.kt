@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.rafag.stonks.android.search.domain.SearchStonksUseCase
 import com.rafag.stonks.android.search.domain.StonkSearch
 import com.rafag.stonks.android.search.domain.ToggleFavouriteUseCase
-import com.rafag.stonks.android.search.view.SearchStonkItemState
+import com.rafag.stonks.android.search.view.SearchStonkUiItem
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -22,26 +22,26 @@ class SearchViewModel(
             searchUseCase.search(query).collect { searchStonks ->
                 state.value = SearchState(
                     searchStonks = searchStonks.map {
-                        it.toSearchStonkItemState()
+                        it.toSearchStonkUiItem()
                     }
                 )
             }
         }
     }
 
-    fun onStonkFaved(item: SearchStonkItemState) {
+    fun onStonkFaved(item: SearchStonkUiItem) {
         viewModelScope.launch {
             toggleFavouriteUseCase.saved(item.symbol)
         }
     }
 
-    fun onStonkUnfaved(item: SearchStonkItemState) {
+    fun onStonkUnfaved(item: SearchStonkUiItem) {
         viewModelScope.launch {
             toggleFavouriteUseCase.unsaved(item.symbol)
         }
     }
 
-    private fun StonkSearch.toSearchStonkItemState() = SearchStonkItemState(
+    private fun StonkSearch.toSearchStonkUiItem() = SearchStonkUiItem(
         name = name,
         symbol = symbol,
         faved = faved
@@ -49,5 +49,5 @@ class SearchViewModel(
 }
 
 data class SearchState(
-    val searchStonks: List<SearchStonkItemState>
+    val searchStonks: List<SearchStonkUiItem>
 )
