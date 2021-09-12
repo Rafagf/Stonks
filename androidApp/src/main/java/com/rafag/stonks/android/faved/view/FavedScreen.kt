@@ -1,9 +1,11 @@
 package com.rafag.stonks.android.faved.view
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.ExtendedFloatingActionButton
+import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.FloatingActionButtonDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
@@ -15,6 +17,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -39,19 +43,23 @@ fun FavedScreen(favedViewModel: FavedViewModel) {
                 elevation = 12.dp
             )
         }, content = {
-            Box {
+            Box(modifier = Modifier.fillMaxSize()) {
                 when (state) {
                     is Content -> content(state as Content)
                     Errror -> Text("Error")
                     Loading -> Text("Loading")
                 }
+                FloatingActionButton(
+                    modifier = Modifier.align(Alignment.BottomEnd),
+                    onClick = {
+                        //todo just deving to see if data flow works correctly: it does!
+                        favedViewModel.foo()
+                    },
+                    elevation = FloatingActionButtonDefaults.elevation(8.dp)
+                ) {
+                    Icon(Icons.Filled.Search, "")
+                }
             }
-            ExtendedFloatingActionButton(
-                icon = { Icon(Icons.Filled.Search, "") },
-                text = { Text("") },
-                onClick = { /*do something*/ },
-                elevation = FloatingActionButtonDefaults.elevation(8.dp)
-            )
         })
 }
 

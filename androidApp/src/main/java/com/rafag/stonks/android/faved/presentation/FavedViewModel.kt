@@ -17,4 +17,8 @@ class FavedViewModel() : ViewModel() {
             _stateFlow.value = FavedState.Content(listOf("1,3,5,7"))
         }
     }
+
+    fun foo() {
+        _stateFlow.value = FavedState.Content(listOf("2,4,6,8"))
+    }
 }
