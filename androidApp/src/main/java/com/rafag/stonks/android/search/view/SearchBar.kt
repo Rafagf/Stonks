@@ -11,10 +11,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.TextStyle
@@ -27,13 +30,14 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun SearchBar(state: MutableState<TextFieldValue>, onSearchQueryChanged: (String) -> Unit) {
+    val focusRequester = FocusRequester()
     TextField(
         value = state.value,
         onValueChange = { value ->
             state.value = value
             onSearchQueryChanged(value.text)
         },
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().focusRequester(focusRequester),
         textStyle = TextStyle(color = Color.White, fontSize = 18.sp),
         leadingIcon = {
             Icon(
@@ -72,5 +76,10 @@ fun SearchBar(state: MutableState<TextFieldValue>, onSearchQueryChanged: (String
             disabledIndicatorColor = Color.Transparent
         )
     )
+
+    DisposableEffect(Unit) {
+        focusRequester.requestFocus()
+        onDispose { }
+    }
 }
 
