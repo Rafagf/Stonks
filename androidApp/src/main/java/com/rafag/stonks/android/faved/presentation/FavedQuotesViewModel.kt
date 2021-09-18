@@ -32,12 +32,16 @@ class FavedViewModel(
 private fun FavedQuote.toFavedQuoteUi() = FavedQuoteUi(
     symbol = symbol,
     current = current.roundTo(2).toString(),
-    change = "${open.roundTo(2)} (${percentageChange(open, current).roundTo(2)})"
+    change = "${open.roundTo(2)} (${formatPercentageChange(open, current)})"
 )
 
-private fun percentageChange(initial: Double, final: Double) = ((final - initial) / initial) * 100
+private fun formatPercentageChange(initial: Double, final: Double): String {
+    val percentage = ((final - initial) / initial) * 100
+    val rounded = percentage.roundTo(2)
+    return if (rounded > 0) "+$rounded" else rounded.toString()
+}
 
-fun Double.roundTo(n : Int) : Double {
+fun Double.roundTo(n: Int): Double {
     return "%.${n}f".format(this).toDouble()
 }
 

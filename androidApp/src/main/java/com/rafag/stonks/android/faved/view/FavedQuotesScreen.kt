@@ -106,17 +106,17 @@ private fun Item(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            modifier = Modifier.weight(0.6f),
+            modifier = Modifier.weight(0.5f),
             text = item.symbol,
             fontSize = 18.sp,
             color = Color.Black
         )
         Box(
-            modifier = Modifier.weight(0.3f)
+            modifier = Modifier.weight(0.35f)
         ) {
             Column(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(24.dp))
+                modifier = Modifier.fillMaxWidth()
+                    .clip(RoundedCornerShape(16.dp))
                     .background(Color.Green)
                     .padding(4.dp)
             ) {
@@ -136,7 +136,7 @@ private fun Item(
         }
         Delete(
             modifier = Modifier
-                .weight(0.1f)
+                .weight(0.15f)
                 .align(Alignment.CenterVertically)
         )
     }
@@ -147,6 +147,7 @@ private fun Delete(modifier: Modifier) {
     Icon(
         Filled.Delete,
         contentDescription = "",
+        tint = Color.DarkGray,
         modifier = modifier
             .size(24.dp)
     )
