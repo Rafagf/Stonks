@@ -1,10 +1,10 @@
 package com.rafag.stonks.android.faved.view
 
+import android.content.Intent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.ExtendedFloatingActionButton
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.FloatingActionButtonDefaults
 import androidx.compose.material.Icon
@@ -20,14 +20,19 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.rafag.stonks.android.R
+import com.rafag.stonks.android.faved.presentation.FavedState
+import com.rafag.stonks.android.faved.presentation.FavedState.*
 import com.rafag.stonks.android.faved.presentation.FavedViewModel
-import com.rafag.stonks.android.faved.view.FavedState.*
+import com.rafag.stonks.android.search.presentation.SearchActivity
+import kotlin.Error
 
 @Composable
 fun FavedScreen(favedViewModel: FavedViewModel) {
+    val context = LocalContext.current
     val state by favedViewModel.stateFlow.collectAsState()
 
     LaunchedEffect("load") {
@@ -46,14 +51,15 @@ fun FavedScreen(favedViewModel: FavedViewModel) {
             Box(modifier = Modifier.fillMaxSize()) {
                 when (state) {
                     is Content -> content(state as Content)
-                    Errror -> Text("Error")
+                    Error -> Text("Error")
                     Loading -> Text("Loading")
                 }
                 FloatingActionButton(
                     modifier = Modifier.align(Alignment.BottomEnd),
                     onClick = {
-                        //todo just deving to see if data flow works correctly: it does!
-                        favedViewModel.foo()
+                        //todo use compose navigation
+                        val intent = Intent(context, SearchActivity::class.java, )
+                        context.startActivity(intent)
                     },
                     elevation = FloatingActionButtonDefaults.elevation(8.dp)
                 ) {
@@ -70,10 +76,4 @@ private fun content(state: FavedState.Content) {
             Text(string)
         }
     }
-}
-
-sealed class FavedState {
-    object Loading : FavedState()
-    object Errror : FavedState()
-    data class Content(val strings: List<String>) : FavedState()
 }
