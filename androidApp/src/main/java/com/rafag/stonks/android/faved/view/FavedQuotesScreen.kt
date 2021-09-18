@@ -123,7 +123,7 @@ private fun Item(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(16.dp))
-                    .background(Color.Green)
+                    .background(if (item.isUp) Color.Green else Color.Red)
                     .padding(4.dp)
             ) {
                 Text(
