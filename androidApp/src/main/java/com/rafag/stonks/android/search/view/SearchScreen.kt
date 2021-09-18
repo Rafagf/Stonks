@@ -7,13 +7,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.text.input.TextFieldValue
+import com.rafag.stonks.android.search.presentation.SearchStonkUi
 import com.rafag.stonks.android.search.presentation.SearchViewModel
 
 interface SearchScreenActions {
 
     fun onSearchQueryChanged(query: String)
-    fun onStonkFaved(item: SearchStonkUiItem)
-    fun onStonkUnfaved(item: SearchStonkUiItem)
+    fun onStonkFaved(item: SearchStonkUi)
+    fun onStonkUnfaved(item: SearchStonkUi)
 }
 
 @Composable

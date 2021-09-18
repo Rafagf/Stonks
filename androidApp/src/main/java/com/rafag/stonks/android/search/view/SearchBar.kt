@@ -74,11 +74,3 @@ fun SearchBar(state: MutableState<TextFieldValue>, onSearchQueryChanged: (String
     )
 }
 
-@Preview(showBackground = true)
-@Composable
-fun SearchViewPreview() {
-    val textState = remember { mutableStateOf(TextFieldValue("")) }
-    SearchBar(textState) {
-        //no op
-    }
-}

@@ -30,25 +30,3 @@ fun SearchStonkList(state: SearchState, actions: SearchScreenActions) {
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun StonkListPreview() {
-    SearchStonkList(SearchState.Loading, object : SearchScreenActions {
-        override fun onSearchQueryChanged(query: String) {
-            //no op
-        }
-
-        override fun onStonkFaved(item: SearchStonkUiItem) {
-            //no op
-        }
-
-        override fun onStonkUnfaved(item: SearchStonkUiItem) {
-            //no op
-        }
-    })
-}
-
-private val dummyData = listOf(
-    SearchStonkUiItem("Apple", "AAPL", true),
-    SearchStonkUiItem("Apple", "AAPL", false),
-)

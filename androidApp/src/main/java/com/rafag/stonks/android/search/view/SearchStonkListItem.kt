@@ -17,12 +17,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.rafag.stonks.android.search.presentation.SearchStonkUi
 
 @Composable
 fun SearchStonkListItem(
-    state: SearchStonkUiItem,
-    onToggleFaved: (SearchStonkUiItem) -> Unit,
-    onToggleUnfaved: (SearchStonkUiItem) -> Unit
+    state: SearchStonkUi,
+    onToggleFaved: (SearchStonkUi) -> Unit,
+    onToggleUnfaved: (SearchStonkUi) -> Unit
 ) {
     Row(
         modifier = Modifier
@@ -70,24 +71,3 @@ private fun notFaved() {
     )
 }
 
-data class SearchStonkUiItem(
-    val name: String,
-    val symbol: String,
-    val faved: Boolean,
-)
-
-@Preview(showBackground = true)
-@Composable
-fun FavedStonkListItemPreview() {
-    SearchStonkListItem(state = SearchStonkUiItem(
-        "Apple", "AAPL", true
-    ), onToggleFaved = { }, onToggleUnfaved = { })
-}
-
-@Preview(showBackground = true)
-@Composable
-fun NotFavedStonkListItemPreview() {
-    SearchStonkListItem(state = SearchStonkUiItem(
-        "Apple", "AAPL", false
-    ), onToggleFaved = { }, onToggleUnfaved = { })
-}
