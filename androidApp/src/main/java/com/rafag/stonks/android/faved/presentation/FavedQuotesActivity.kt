@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import com.rafag.stonks.android.di.favedViewModel
 import com.rafag.stonks.android.faved.view.FavedScreen
 
-class FavedActivity : ComponentActivity() {
+class FavedQuotesActivity : ComponentActivity() {
 
     private lateinit var favedViewModel: FavedViewModel
 

@@ -25,26 +25,26 @@ class FavedViewModel(
                     }
                 )
             }
-
         }
     }
 }
 
 private fun FavedQuote.toFavedQuoteUi() = FavedQuoteUi(
     symbol = symbol,
-    current = current,
-    open = open,
-    percentageChange = percentageChange(open, current).toString()
-
+    current = current.roundTo(2).toString(),
+    change = "${open.roundTo(2)} (${percentageChange(open, current).roundTo(2)})"
 )
 
 private fun percentageChange(initial: Double, final: Double) = ((final - initial) / initial) * 100
 
+fun Double.roundTo(n : Int) : Double {
+    return "%.${n}f".format(this).toDouble()
+}
+
 data class FavedQuoteUi(
     val symbol: String,
-    val current: Double,
-    val open: Double,
-    val percentageChange: String
+    val current: String,
+    val change: String
 )
 
 sealed class FavedState {

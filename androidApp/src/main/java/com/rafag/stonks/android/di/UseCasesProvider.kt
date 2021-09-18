@@ -15,7 +15,7 @@ class UseCasesProvider(repositoryProvider: RepositoryProvider) {
         favouritesRepository = repositoryProvider.favouritesRepository,
     )
 
-    val fetchSavedStonksUseCase = FetchFavedQuotesUseCase(
+    val fetchSavedQuotesUseCase = FetchFavedQuotesUseCase(
         favouritesRepository = repositoryProvider.favouritesRepository,
         quoteRepository = repositoryProvider.quoteRepository,
     )

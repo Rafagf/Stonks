@@ -9,7 +9,7 @@
     android:theme="@style/AppTheme">
 
     <activity
-      android:name=".faved.presentation.FavedActivity"
+      android:name=".faved.presentation.FavedQuotesActivity"
       android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
