@@ -3,6 +3,7 @@ package com.rafag.stonks.android.faved.view
 import android.content.Intent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.FloatingActionButton
@@ -28,12 +29,11 @@ import com.rafag.stonks.android.faved.presentation.FavedState
 import com.rafag.stonks.android.faved.presentation.FavedState.*
 import com.rafag.stonks.android.faved.presentation.FavedViewModel
 import com.rafag.stonks.android.search.presentation.SearchActivity
-import kotlin.Error
 
 @Composable
 fun FavedScreen(favedViewModel: FavedViewModel) {
     val context = LocalContext.current
-    val state by favedViewModel.stateFlow.collectAsState()
+    val state by favedViewModel.state.collectAsState()
 
     LaunchedEffect("load") {
         favedViewModel.load()
@@ -55,7 +55,7 @@ fun FavedScreen(favedViewModel: FavedViewModel) {
                     Loading -> Text("Loading")
                 }
                 FloatingActionButton(
-                    modifier = Modifier.align(Alignment.BottomEnd),
+                    modifier = Modifier.align(Alignment.BottomEnd).padding(16.dp),
                     onClick = {
                         //todo use compose navigation
                         val intent = Intent(context, SearchActivity::class.java, )
@@ -72,8 +72,8 @@ fun FavedScreen(favedViewModel: FavedViewModel) {
 @Composable
 private fun content(state: FavedState.Content) {
     LazyColumn {
-        items(state.strings) { string ->
-            Text(string)
+        items(state.quotes) { stonk ->
+            Text("${stonk.symbol} ${stonk.open} ${stonk.current} ${stonk.percentageChange}")
         }
     }
 }

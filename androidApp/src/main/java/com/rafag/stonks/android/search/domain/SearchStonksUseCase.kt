@@ -5,16 +5,14 @@ import com.rafag.stonks.data.search.SearchItem
 import com.rafag.stonks.data.search.SearchRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.zip
 
 class SearchStonksUseCase(
     private val searchRepository: SearchRepository,
     private val favouritesRepository: FavouritesRepository
 ) {
 
-    suspend fun search(query: String): Flow<List<StonkSearch>> {
+    suspend fun invoke(query: String): Flow<List<StonkSearch>> {
         val searchSource = flowOf(searchRepository.searchRequest(query))
         val favsSource = favouritesRepository.getAll()
         return searchSource.combine(favsSource) { search, favs ->
