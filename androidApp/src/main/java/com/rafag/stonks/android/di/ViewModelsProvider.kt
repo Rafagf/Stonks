@@ -12,7 +12,9 @@ class ViewModelsProvider(useCasesProvider: UseCasesProvider) {
         toggleFavouriteUseCase = useCasesProvider.toggleFavouriteUseCase,
     )
 
-    val favedViewModel = FavedViewModel()
+    val favedViewModel = FavedViewModel(
+        fetchSavedStonks = useCasesProvider.fetchSavedStonksUseCase
+    )
 }
 
 fun Activity.searchViewModel() = (application as StonksApplication).viewModelsProvider.searchViewModel
