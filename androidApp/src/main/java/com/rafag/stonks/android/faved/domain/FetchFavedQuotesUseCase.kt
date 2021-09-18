@@ -8,15 +8,15 @@ import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 
-class FetchFavedStonksUseCase(
+class FetchFavedQuotesUseCase(
     private val quoteRepository: QuoteRepository,
     private val favouritesRepository: FavouritesRepository
 ) {
-    suspend fun invoke(): Flow<List<FavedStonk>> {
+    suspend fun invoke(): Flow<List<FavedQuote>> {
         return favouritesRepository.getAll().flatMapConcat {
             quotes(it).map {
                 it.map {
-                    FavedStonk(it.symbol, it.current, it.open)
+                    FavedQuote(it.symbol, it.current, it.open)
                 }
             }
         }
@@ -29,7 +29,7 @@ class FetchFavedStonksUseCase(
     }
 }
 
-data class FavedStonk(
+data class FavedQuote(
     val symbol: String,
     val current: Double,
     val open: Double,
