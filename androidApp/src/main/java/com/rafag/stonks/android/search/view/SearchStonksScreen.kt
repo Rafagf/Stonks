@@ -18,13 +18,25 @@ interface SearchScreenActions {
 }
 
 @Composable
-fun SearchScreen(searchViewModel: SearchViewModel, actions: SearchScreenActions) {
+fun SearchStonksScreen(searchViewModel: SearchViewModel) {
     val textState = remember { mutableStateOf(TextFieldValue("")) }
     val state by searchViewModel.state.collectAsState()
 
     Column {
-        SearchBar(textState, actions::onSearchQueryChanged)
-        SearchStonkList(state, actions)
+        SearchBar(textState, {
+
+        })
+        SearchStonkList(state, object : SearchScreenActions {
+            override fun onSearchQueryChanged(query: String) {
+
+            }
+
+            override fun onStonkFaved(item: SearchStonkUi) {
+            }
+
+            override fun onStonkUnfaved(item: SearchStonkUi) {
+            }
+        })
     }
 }
 

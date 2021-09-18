@@ -1,6 +1,7 @@
 package com.rafag.stonks.android.di
 
 import android.app.Activity
+import android.app.Application
 import com.rafag.stonks.android.StonksApplication
 import com.rafag.stonks.android.faved.presentation.FavedViewModel
 import com.rafag.stonks.android.search.presentation.SearchViewModel
@@ -18,5 +19,5 @@ class ViewModelsProvider(useCasesProvider: UseCasesProvider) {
     )
 }
 
-fun Activity.searchViewModel() = (application as StonksApplication).viewModelsProvider.searchViewModel
-fun Activity.favedViewModel() = (application as StonksApplication).viewModelsProvider.favedViewModel
+fun Application.searchStonksViewModel() = (this as StonksApplication).viewModelsProvider.searchViewModel
+fun Application.favedQuotesViewModel() = (this as StonksApplication).viewModelsProvider.favedViewModel

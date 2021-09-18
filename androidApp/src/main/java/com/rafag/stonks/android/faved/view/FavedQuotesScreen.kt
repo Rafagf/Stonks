@@ -1,6 +1,5 @@
 package com.rafag.stonks.android.faved.view
 
-import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -33,25 +32,22 @@ import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.rafag.stonks.android.R
 import com.rafag.stonks.android.faved.presentation.FavedQuoteUi
 import com.rafag.stonks.android.faved.presentation.FavedState
 import com.rafag.stonks.android.faved.presentation.FavedState.*
 import com.rafag.stonks.android.faved.presentation.FavedViewModel
-import com.rafag.stonks.android.search.presentation.SearchActivity
-
-interface FavedQuotesScreenActions {
-
-    fun onDeleteStonkClicked(item: FavedQuoteUi)
-}
+import com.rafag.stonks.android.navigation.NAVIGATE_TO_SEARCH_STONKS_SCREEN
 
 @Composable
-fun FavedQuotesScreen(favedViewModel: FavedViewModel, actions: FavedQuotesScreenActions) {
-    val context = LocalContext.current
+fun FavedQuotesScreen(
+    navController: NavController,
+    favedViewModel: FavedViewModel,
+) {
     val state by favedViewModel.state.collectAsState()
 
     LaunchedEffect("load") {
@@ -69,7 +65,9 @@ fun FavedQuotesScreen(favedViewModel: FavedViewModel, actions: FavedQuotesScreen
         }, content = {
             Box(modifier = Modifier.fillMaxSize()) {
                 when (state) {
-                    is Content -> content(state as Content, actions)
+                    is Content -> content(state as Content) {
+
+                    }
                     Error -> Text("Error")
                     Loading -> Text("Loading")
                 }
@@ -78,9 +76,7 @@ fun FavedQuotesScreen(favedViewModel: FavedViewModel, actions: FavedQuotesScreen
                         .align(Alignment.BottomEnd)
                         .padding(16.dp),
                     onClick = {
-                        //todo use compose navigation
-                        val intent = Intent(context, SearchActivity::class.java)
-                        context.startActivity(intent)
+                        navController.navigate(NAVIGATE_TO_SEARCH_STONKS_SCREEN)
                     },
                     elevation = FloatingActionButtonDefaults.elevation(8.dp)
                 ) {
@@ -91,10 +87,10 @@ fun FavedQuotesScreen(favedViewModel: FavedViewModel, actions: FavedQuotesScreen
 }
 
 @Composable
-private fun content(state: FavedState.Content, actions: FavedQuotesScreenActions) {
+private fun content(state: FavedState.Content, onDeleteClicked: (FavedQuoteUi) -> Unit ) {
     LazyColumn {
         items(state.quotes) { item ->
-            Item(item, actions::onDeleteStonkClicked)
+            Item(item, onDeleteClicked)
         }
     }
 }
@@ -117,7 +113,9 @@ private fun Item(
             color = Color.Black
         )
         Box(
-            modifier = Modifier.weight(0.35f).padding(end = 8.dp)
+            modifier = Modifier
+                .weight(0.35f)
+                .padding(end = 8.dp)
         ) {
             Column(
                 modifier = Modifier
