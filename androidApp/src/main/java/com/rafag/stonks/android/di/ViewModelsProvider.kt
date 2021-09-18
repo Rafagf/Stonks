@@ -13,7 +13,8 @@ class ViewModelsProvider(useCasesProvider: UseCasesProvider) {
     )
 
     val favedViewModel = FavedViewModel(
-        fetchFavedQuotesUseCase = useCasesProvider.fetchSavedQuotesUseCase
+        fetchFavedQuotesUseCase = useCasesProvider.fetchSavedQuotesUseCase,
+        toggleFavouriteUseCase = useCasesProvider.toggleFavouriteUseCase,
     )
 }
 

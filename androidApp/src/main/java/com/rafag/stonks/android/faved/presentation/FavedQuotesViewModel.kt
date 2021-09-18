@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rafag.stonks.android.faved.domain.FavedQuote
 import com.rafag.stonks.android.faved.domain.FetchFavedQuotesUseCase
+import com.rafag.stonks.android.search.domain.ToggleFavouriteUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
@@ -11,7 +12,8 @@ import kotlinx.coroutines.launch
 
 class FavedViewModel(
     private val fetchFavedQuotesUseCase: FetchFavedQuotesUseCase,
-) : ViewModel() {
+    private val toggleFavouriteUseCase: ToggleFavouriteUseCase,
+    ) : ViewModel() {
 
     private val _state = MutableStateFlow<FavedState>(FavedState.Loading)
     val state: StateFlow<FavedState> get() = _state
@@ -25,6 +27,12 @@ class FavedViewModel(
                     }
                 )
             }
+        }
+    }
+
+    fun onDeleteStonkClicked(item: FavedQuoteUi) {
+        viewModelScope.launch {
+            toggleFavouriteUseCase.unsaved(item.symbol)
         }
     }
 }

@@ -2,6 +2,7 @@ package com.rafag.stonks.android.faved.view
 
 import android.content.Intent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,7 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.FloatingActionButtonDefaults
@@ -22,13 +22,13 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.Icons.Filled
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -44,8 +44,13 @@ import com.rafag.stonks.android.faved.presentation.FavedState.*
 import com.rafag.stonks.android.faved.presentation.FavedViewModel
 import com.rafag.stonks.android.search.presentation.SearchActivity
 
+interface FavedQuotesScreenActions {
+
+    fun onDeleteStonkClicked(item: FavedQuoteUi)
+}
+
 @Composable
-fun FavedScreen(favedViewModel: FavedViewModel) {
+fun FavedQuotesScreen(favedViewModel: FavedViewModel, actions: FavedQuotesScreenActions) {
     val context = LocalContext.current
     val state by favedViewModel.state.collectAsState()
 
@@ -64,7 +69,7 @@ fun FavedScreen(favedViewModel: FavedViewModel) {
         }, content = {
             Box(modifier = Modifier.fillMaxSize()) {
                 when (state) {
-                    is Content -> content(state as Content)
+                    is Content -> content(state as Content, actions)
                     Error -> Text("Error")
                     Loading -> Text("Loading")
                 }
@@ -86,10 +91,10 @@ fun FavedScreen(favedViewModel: FavedViewModel) {
 }
 
 @Composable
-private fun content(state: FavedState.Content) {
+private fun content(state: FavedState.Content, actions: FavedQuotesScreenActions) {
     LazyColumn {
         items(state.quotes) { item ->
-            Item(item, {})
+            Item(item, actions::onDeleteStonkClicked)
         }
     }
 }
@@ -97,7 +102,7 @@ private fun content(state: FavedState.Content) {
 @Composable
 private fun Item(
     item: FavedQuoteUi,
-    onRemoveClicked: (FavedQuoteUi) -> Unit,
+    onDeleteStonkClicked: (FavedQuoteUi) -> Unit,
 ) {
     Row(
         modifier = Modifier
@@ -112,10 +117,11 @@ private fun Item(
             color = Color.Black
         )
         Box(
-            modifier = Modifier.weight(0.35f)
+            modifier = Modifier.weight(0.35f).padding(end = 8.dp)
         ) {
             Column(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
                     .clip(RoundedCornerShape(16.dp))
                     .background(Color.Green)
                     .padding(4.dp)
@@ -134,11 +140,17 @@ private fun Item(
                 )
             }
         }
-        Delete(
-            modifier = Modifier
-                .weight(0.15f)
-                .align(Alignment.CenterVertically)
-        )
+        Box(
+            modifier = Modifier.weight(0.1f)
+        ) {
+            Delete(
+                modifier = Modifier
+                    .align(alignment = Center)
+                    .clickable {
+                        onDeleteStonkClicked(item)
+                    }
+            )
+        }
     }
 }
 

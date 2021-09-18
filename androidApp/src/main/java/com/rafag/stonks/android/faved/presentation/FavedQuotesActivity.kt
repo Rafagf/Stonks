@@ -4,7 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.rafag.stonks.android.di.favedViewModel
-import com.rafag.stonks.android.faved.view.FavedScreen
+import com.rafag.stonks.android.faved.view.FavedQuotesScreen
+import com.rafag.stonks.android.faved.view.FavedQuotesScreenActions
 
 class FavedQuotesActivity : ComponentActivity() {
 
@@ -14,7 +15,11 @@ class FavedQuotesActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         favedViewModel = favedViewModel()
         setContent {
-            FavedScreen(favedViewModel)
+            FavedQuotesScreen(favedViewModel, actions = object : FavedQuotesScreenActions {
+                override fun onDeleteStonkClicked(item: FavedQuoteUi) {
+                    favedViewModel.onDeleteStonkClicked(item)
+                }
+            })
         }
     }
 }
