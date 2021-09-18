@@ -46,12 +46,12 @@ import com.rafag.stonks.android.navigation.NAVIGATE_TO_SEARCH_STONKS_SCREEN
 @Composable
 fun FavedQuotesScreen(
     navController: NavController,
-    favedViewModel: FavedViewModel,
+    viewModel: FavedViewModel,
 ) {
-    val state by favedViewModel.state.collectAsState()
+    val state by viewModel.state.collectAsState()
 
     LaunchedEffect("load") {
-        favedViewModel.load()
+        viewModel.load()
     }
 
     Scaffold(
@@ -65,9 +65,7 @@ fun FavedQuotesScreen(
         }, content = {
             Box(modifier = Modifier.fillMaxSize()) {
                 when (state) {
-                    is Content -> content(state as Content) {
-
-                    }
+                    is Content -> content(state as Content, viewModel::onDeleteStonkClicked)
                     Error -> Text("Error")
                     Loading -> Text("Loading")
                 }
@@ -87,7 +85,7 @@ fun FavedQuotesScreen(
 }
 
 @Composable
-private fun content(state: FavedState.Content, onDeleteClicked: (FavedQuoteUi) -> Unit ) {
+private fun content(state: FavedState.Content, onDeleteClicked: (FavedQuoteUi) -> Unit) {
     LazyColumn {
         items(state.quotes) { item ->
             Item(item, onDeleteClicked)

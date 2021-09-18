@@ -23,22 +23,29 @@ import com.rafag.stonks.android.search.presentation.SearchState.*
 import com.rafag.stonks.android.search.presentation.SearchStonkUi
 
 @Composable
-fun SearchStonkList(state: SearchState, actions: SearchScreenActions) {
+fun SearchStonkList(
+    state: SearchState,
+    onToggleFaved: (SearchStonkUi) -> Unit,
+    onToggleUnfaved: (SearchStonkUi) -> Unit
+) {
     when (state) {
-        is Content -> Content(state, actions)
+        is Content -> Content(state, onToggleFaved, onToggleUnfaved)
         Error -> Text("Error state")
         Loading -> Text("Loading state")
     }
 }
 
 @Composable
-private fun Content(state: Content, actions: SearchScreenActions) {
+private fun Content(state: Content,
+    onToggleFaved: (SearchStonkUi) -> Unit,
+    onToggleUnfaved: (SearchStonkUi) -> Unit
+) {
     LazyColumn(modifier = Modifier.fillMaxWidth()) {
         items(state.searchStonks) { stonk ->
             ListItem(
                 item = stonk,
-                onToggleFaved = actions::onStonkFaved,
-                onToggleUnfaved = actions::onStonkUnfaved,
+                onToggleFaved = onToggleFaved,
+                onToggleUnfaved = onToggleUnfaved,
             )
         }
     }

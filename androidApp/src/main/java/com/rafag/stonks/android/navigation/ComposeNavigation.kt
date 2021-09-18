@@ -22,10 +22,10 @@ fun ComposeNavigation(navController: NavHostController) {
         startDestination = NAVIGATE_TO_FAVED_QUOTES_SCREEN
     ) {
         composable(NAVIGATE_TO_FAVED_QUOTES_SCREEN) {
-            FavedQuotesScreen(navController = navController, favedViewModel = application.favedQuotesViewModel())
+            FavedQuotesScreen(navController = navController, viewModel = application.favedQuotesViewModel())
         }
         composable(NAVIGATE_TO_SEARCH_STONKS_SCREEN) {
-            SearchStonksScreen(searchViewModel = application.searchStonksViewModel())
+            SearchStonksScreen(viewModel = application.searchStonksViewModel())
         }
     }
 }

@@ -4,6 +4,9 @@ import com.rafag.stonks.android.faved.domain.FetchFavedQuotesUseCase
 import com.rafag.stonks.android.search.domain.SearchStonksUseCase
 import com.rafag.stonks.android.search.domain.ToggleFavouriteUseCase
 
+/**
+ * Doing Manual DI for simplicity, migrate to Dagger Hilt
+ */
 class UseCasesProvider(repositoryProvider: RepositoryProvider) {
 
     val searchStonksUseCase = SearchStonksUseCase(

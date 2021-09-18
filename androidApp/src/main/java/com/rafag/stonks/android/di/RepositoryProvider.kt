@@ -7,6 +7,9 @@ import com.rafag.stonks.data.search.SearchModule
 import com.rafag.stonks.db.DatabaseDriverFactory
 import com.stonks.db.StonksDatabase
 
+/**
+ * Doing Manual DI for simplicity, migrate to Dagger Hilt
+ */
 class RepositoryProvider(applicationContext: Context) {
 
     private val driver = DatabaseDriverFactory(applicationContext).createDriver()
