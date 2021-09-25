@@ -43,6 +43,8 @@ import com.rafag.stonks.android.faved.presentation.FavedState.*
 import com.rafag.stonks.android.faved.presentation.FavedViewModel
 import com.rafag.stonks.android.navigation.NAVIGATE_TO_SEARCH_STONKS_SCREEN
 import com.rafag.stonks.android.theming.StonksColors
+import com.rafag.stonks.android.theming.StonksText
+import com.rafag.stonks.android.theming.StonksText.BodyBigBold
 
 @Composable
 fun FavedQuotesScreen(
@@ -103,11 +105,9 @@ private fun Item(
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(
+        BodyBigBold(
             modifier = Modifier.weight(0.5f),
             text = item.symbol,
-            fontSize = 18.sp,
-            color = Color.Black
         )
         Box(
             modifier = Modifier
@@ -121,17 +121,13 @@ private fun Item(
                     .background(if (item.isUp) StonksColors.green400 else StonksColors.red700)
                     .padding(4.dp)
             ) {
-                Text(
+                StonksText.BodyMediumBold(
                     modifier = Modifier.align(CenterHorizontally),
                     text = item.current,
-                    fontSize = 18.sp,
-                    color = Color.Black
                 )
-                Text(
+                StonksText.BodySmall(
                     modifier = Modifier.align(CenterHorizontally),
                     text = item.change,
-                    fontSize = 14.sp,
-                    color = Color.Black
                 )
             }
         }

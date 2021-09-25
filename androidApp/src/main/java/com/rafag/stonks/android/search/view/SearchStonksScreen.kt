@@ -27,6 +27,7 @@ import com.rafag.stonks.android.search.presentation.SearchState
 import com.rafag.stonks.android.search.presentation.SearchState.*
 import com.rafag.stonks.android.search.presentation.SearchStonkUi
 import com.rafag.stonks.android.search.presentation.SearchViewModel
+import com.rafag.stonks.android.theming.StonksColors
 
 @Composable
 fun SearchStonksScreen(viewModel: SearchViewModel) {
@@ -101,7 +102,7 @@ private fun Faved() {
     Icon(
         Filled.Favorite,
         contentDescription = "",
-        tint = Color.Red,
+        tint = StonksColors.red700,
         modifier = Modifier
             .padding(15.dp)
             .size(24.dp)
@@ -113,7 +114,7 @@ private fun NotFaved() {
     Icon(
         Filled.Favorite,
         contentDescription = "",
-        tint = Color.LightGray,
+        tint = StonksColors.gray200,
         modifier = Modifier
             .padding(16.dp)
             .size(24.dp)
