@@ -19,15 +19,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.rafag.stonks.android.search.presentation.SearchState
 import com.rafag.stonks.android.search.presentation.SearchState.*
 import com.rafag.stonks.android.search.presentation.SearchStonkUi
 import com.rafag.stonks.android.search.presentation.SearchViewModel
 import com.rafag.stonks.android.theming.StonksColors
+import com.rafag.stonks.android.theming.StonksText
+import com.rafag.stonks.android.theming.StonksText.BodyMedium
 
 @Composable
 fun SearchStonksScreen(viewModel: SearchViewModel) {
@@ -80,8 +80,7 @@ private fun ListItem(
             .clickable(onClick = {
                 if (item.faved) onToggleUnfaved(item) else onToggleFaved(item)
             })
-            .fillMaxWidth()
-            .padding(vertical = 16.dp),
+            .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(
@@ -89,11 +88,10 @@ private fun ListItem(
                 .weight(0.8f)
                 .padding(16.dp)
         ) {
-            Text(text = item.name, fontSize = 18.sp, color = Color.Black)
-            Text(text = item.symbol, fontSize = 14.sp, color = Color.Black)
+            StonksText.BodyMediumBold(text = item.name)
+            BodyMedium(text = item.symbol)
         }
         if (item.faved) Faved() else NotFaved()
-
     }
 }
 
@@ -102,7 +100,7 @@ private fun Faved() {
     Icon(
         Filled.Favorite,
         contentDescription = "",
-        tint = StonksColors.red700,
+        tint = StonksColors.red400,
         modifier = Modifier
             .padding(15.dp)
             .size(24.dp)

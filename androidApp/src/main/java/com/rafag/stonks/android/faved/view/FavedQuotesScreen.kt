@@ -12,9 +12,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Colors
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.FloatingActionButtonDefaults
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -34,7 +36,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.rafag.stonks.android.R
 import com.rafag.stonks.android.faved.presentation.FavedQuoteUi
@@ -61,6 +62,7 @@ fun FavedQuotesScreen(
         topBar = {
             TopAppBar(
                 title = { Text(text = stringResource(id = R.string.your_stonks)) },
+                backgroundColor = MaterialTheme.colors.primary,
                 elevation = 12.dp
             )
         }, content = {
@@ -118,15 +120,17 @@ private fun Item(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(16.dp))
-                    .background(if (item.isUp) StonksColors.green400 else StonksColors.red700)
+                    .background(if (item.isUp) StonksColors.green400 else StonksColors.red400)
                     .padding(4.dp)
             ) {
                 StonksText.BodyMediumBold(
                     modifier = Modifier.align(CenterHorizontally),
+                    color = MaterialTheme.colors.quotesTextColor,
                     text = item.current,
                 )
                 StonksText.BodySmall(
                     modifier = Modifier.align(CenterHorizontally),
+                    color = MaterialTheme.colors.quotesTextColor,
                     text = item.change,
                 )
             }
@@ -155,3 +159,6 @@ private fun Delete(modifier: Modifier) {
             .size(24.dp)
     )
 }
+
+private val Colors.quotesTextColor: Color
+    @Composable get() = StonksColors.white

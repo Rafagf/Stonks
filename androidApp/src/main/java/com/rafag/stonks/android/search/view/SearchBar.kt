@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
@@ -25,6 +26,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.rafag.stonks.android.theming.StonksText.BodyBig
 
 //Kudos to https://johncodeos.com/how-to-add-search-in-list-with-jetpack-compose/
 
@@ -38,7 +40,7 @@ fun SearchBar(state: MutableState<TextFieldValue>, onSearchQueryChanged: (String
             onSearchQueryChanged(value.text)
         },
         modifier = Modifier.fillMaxWidth().focusRequester(focusRequester),
-        textStyle = TextStyle(color = Color.White, fontSize = 18.sp),
+        textStyle = MaterialTheme.typography.h3,
         leadingIcon = {
             Icon(
                 Icons.Default.Search,
@@ -65,16 +67,6 @@ fun SearchBar(state: MutableState<TextFieldValue>, onSearchQueryChanged: (String
         },
         singleLine = true,
         shape = RectangleShape,
-        colors = TextFieldDefaults.textFieldColors(
-            textColor = Color.White,
-            cursorColor = Color.White,
-            leadingIconColor = Color.White,
-            trailingIconColor = Color.White,
-            backgroundColor = Color.Blue,
-            focusedIndicatorColor = Color.Transparent,
-            unfocusedIndicatorColor = Color.Transparent,
-            disabledIndicatorColor = Color.Transparent
-        )
     )
 
     DisposableEffect(Unit) {
