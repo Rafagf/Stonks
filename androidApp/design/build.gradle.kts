@@ -11,6 +11,7 @@ dependencies {
     implementation("androidx.compose.foundation:foundation:1.0.2")
     implementation("androidx.compose.runtime:runtime-livedata:1.0.2")
     implementation("androidx.compose.material:material:1.0.2")
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.18.0")
     implementation("androidx.compose.ui:ui-tooling:1.0.1") {
         version {
             strictly("1.0.0-beta09")
