@@ -61,7 +61,7 @@ fun FavedQuotesScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = stringResource(id = R.string.your_stonks)) },
+                title = { Text(text = stringResource(id = R.string.my_stonks)) },
                 backgroundColor = MaterialTheme.colors.primary,
                 elevation = 12.dp
             )
