@@ -28,6 +28,7 @@ import com.rafag.stonks.android.search.presentation.SearchViewModel
 import com.rafag.stonks.android.design.theming.StonksColors
 import com.rafag.stonks.android.design.theming.StonksText
 import com.rafag.stonks.android.design.theming.StonksText.BodyMedium
+import com.rafag.stonks.android.design.views.SearchBar
 
 @Composable
 fun SearchStonksScreen(viewModel: SearchViewModel) {
