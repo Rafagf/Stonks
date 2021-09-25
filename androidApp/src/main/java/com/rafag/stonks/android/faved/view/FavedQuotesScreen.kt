@@ -1,18 +1,14 @@
 package com.rafag.stonks.android.faved.view
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Colors
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.FloatingActionButtonDefaults
 import androidx.compose.material.Icon
@@ -21,8 +17,6 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.Icons.Filled
-import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -30,24 +24,19 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Center
-import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.rafag.stonks.android.R
+import com.rafag.stonks.android.design.theming.StonksText.BodyBigBold
+import com.rafag.stonks.android.design.views.Delete
+import com.rafag.stonks.android.design.views.StonkQuote
 import com.rafag.stonks.android.faved.presentation.FavedQuoteUi
 import com.rafag.stonks.android.faved.presentation.FavedState
 import com.rafag.stonks.android.faved.presentation.FavedState.*
 import com.rafag.stonks.android.faved.presentation.FavedViewModel
 import com.rafag.stonks.android.navigation.NAVIGATE_TO_SEARCH_STONKS_SCREEN
-import com.rafag.stonks.android.design.theming.StonksColors
-import com.rafag.stonks.android.design.theming.StonksText
-import com.rafag.stonks.android.design.theming.StonksText.BodyBigBold
-import com.rafag.stonks.android.design.views.Delete
-import com.rafag.stonks.android.design.views.StonkQuote
 
 @Composable
 fun FavedQuotesScreen(
@@ -70,36 +59,41 @@ fun FavedQuotesScreen(
         }, content = {
             Box(modifier = Modifier.fillMaxSize()) {
                 when (state) {
-                    is Content -> content(state as Content, viewModel::onDeleteStonkClicked)
+                    is Content -> Content(state as Content, viewModel::onDeleteStonkClicked)
                     Error -> Text("Error")
                     Loading -> Text("Loading")
                 }
-                FloatingActionButton(
-                    modifier = Modifier
-                        .align(Alignment.BottomEnd)
-                        .padding(16.dp),
-                    onClick = {
-                        navController.navigate(NAVIGATE_TO_SEARCH_STONKS_SCREEN)
-                    },
-                    elevation = FloatingActionButtonDefaults.elevation(8.dp)
-                ) {
-                    Icon(Icons.Filled.Search, "")
+                SearchButton {
+                    navController.navigate(NAVIGATE_TO_SEARCH_STONKS_SCREEN)
                 }
             }
         })
 }
 
 @Composable
-private fun content(state: FavedState.Content, onDeleteClicked: (FavedQuoteUi) -> Unit) {
+private fun BoxScope.SearchButton(onClick: () -> Unit) {
+    FloatingActionButton(
+        modifier = Modifier
+            .align(Alignment.BottomEnd)
+            .padding(16.dp),
+        onClick = { onClick() },
+        elevation = FloatingActionButtonDefaults.elevation(8.dp)
+    ) {
+        Icon(Icons.Filled.Search, "")
+    }
+}
+
+@Composable
+private fun Content(state: FavedState.Content, onDeleteClicked: (FavedQuoteUi) -> Unit) {
     LazyColumn {
         items(state.quotes) { item ->
-            Item(item, onDeleteClicked)
+            StonkItem(item, onDeleteClicked)
         }
     }
 }
 
 @Composable
-private fun Item(
+private fun StonkItem(
     item: FavedQuoteUi,
     onDeleteStonkClicked: (FavedQuoteUi) -> Unit,
 ) {
