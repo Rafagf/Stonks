@@ -6,6 +6,7 @@ import androidx.compose.ui.graphics.Color
 
 object StonksColors {
     val yellow600 = Color(0xFFbba353)
+    val yellow800 = Color(0xFF977e4a)
     val red400 = Color(0xFFc6233e)
     val green400 = Color(0xFF82cf63)
     val white = Color(0xFFFFFFFF)
@@ -16,7 +17,7 @@ object StonksColors {
 
 val lightColors = lightColors(
     primary = StonksColors.yellow600,
-    primaryVariant = StonksColors.yellow600,
+    primaryVariant = StonksColors.yellow800,
     secondary = StonksColors.yellow600,
     secondaryVariant = StonksColors.yellow600,
     background = StonksColors.white,
@@ -31,7 +32,7 @@ val lightColors = lightColors(
 
 val darkColors = darkColors(
     primary = StonksColors.yellow600,
-    primaryVariant = StonksColors.yellow600,
+    primaryVariant = StonksColors.yellow800,
     secondary = StonksColors.yellow600,
     secondaryVariant = StonksColors.yellow600,
     background = StonksColors.black200,
