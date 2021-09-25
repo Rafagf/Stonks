@@ -5,13 +5,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Icon
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons.Filled
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -21,14 +17,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import com.rafag.stonks.android.design.theming.StonksText
+import com.rafag.stonks.android.design.theming.StonksText.BodyMedium
+import com.rafag.stonks.android.design.views.Faved
+import com.rafag.stonks.android.design.views.NotFaved
+import com.rafag.stonks.android.design.views.SearchBar
 import com.rafag.stonks.android.search.presentation.SearchState
 import com.rafag.stonks.android.search.presentation.SearchState.*
 import com.rafag.stonks.android.search.presentation.SearchStonkUi
 import com.rafag.stonks.android.search.presentation.SearchViewModel
-import com.rafag.stonks.android.design.theming.StonksColors
-import com.rafag.stonks.android.design.theming.StonksText
-import com.rafag.stonks.android.design.theming.StonksText.BodyMedium
-import com.rafag.stonks.android.design.views.SearchBar
 
 @Composable
 fun SearchStonksScreen(viewModel: SearchViewModel) {
@@ -95,28 +92,3 @@ private fun ListItem(
         if (item.faved) Faved() else NotFaved()
     }
 }
-
-@Composable
-private fun Faved() {
-    Icon(
-        Filled.Favorite,
-        contentDescription = "",
-        tint = StonksColors.red400,
-        modifier = Modifier
-            .padding(15.dp)
-            .size(24.dp)
-    )
-}
-
-@Composable
-private fun NotFaved() {
-    Icon(
-        Filled.Favorite,
-        contentDescription = "",
-        tint = StonksColors.gray200,
-        modifier = Modifier
-            .padding(16.dp)
-            .size(24.dp)
-    )
-}
-

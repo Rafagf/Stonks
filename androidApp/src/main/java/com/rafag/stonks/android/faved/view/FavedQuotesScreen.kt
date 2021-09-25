@@ -46,6 +46,8 @@ import com.rafag.stonks.android.navigation.NAVIGATE_TO_SEARCH_STONKS_SCREEN
 import com.rafag.stonks.android.design.theming.StonksColors
 import com.rafag.stonks.android.design.theming.StonksText
 import com.rafag.stonks.android.design.theming.StonksText.BodyBigBold
+import com.rafag.stonks.android.design.views.Delete
+import com.rafag.stonks.android.design.views.StonkQuote
 
 @Composable
 fun FavedQuotesScreen(
@@ -116,24 +118,11 @@ private fun Item(
                 .weight(0.35f)
                 .padding(end = 8.dp)
         ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(16.dp))
-                    .background(if (item.isUp) StonksColors.green400 else StonksColors.red400)
-                    .padding(4.dp)
-            ) {
-                StonksText.BodyMediumBold(
-                    modifier = Modifier.align(CenterHorizontally),
-                    color = MaterialTheme.colors.quotesTextColor,
-                    text = item.current,
-                )
-                StonksText.BodySmall(
-                    modifier = Modifier.align(CenterHorizontally),
-                    color = MaterialTheme.colors.quotesTextColor,
-                    text = item.change,
-                )
-            }
+            StonkQuote(
+                isUp = item.isUp,
+                price = item.current,
+                change = item.change
+            )
         }
         Box(
             modifier = Modifier.weight(0.1f)
@@ -148,17 +137,3 @@ private fun Item(
         }
     }
 }
-
-@Composable
-private fun Delete(modifier: Modifier) {
-    Icon(
-        Filled.Delete,
-        contentDescription = "",
-        tint = StonksColors.gray600,
-        modifier = modifier
-            .size(24.dp)
-    )
-}
-
-private val Colors.quotesTextColor: Color
-    @Composable get() = StonksColors.white
