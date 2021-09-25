@@ -42,6 +42,7 @@ import com.rafag.stonks.android.faved.presentation.FavedState
 import com.rafag.stonks.android.faved.presentation.FavedState.*
 import com.rafag.stonks.android.faved.presentation.FavedViewModel
 import com.rafag.stonks.android.navigation.NAVIGATE_TO_SEARCH_STONKS_SCREEN
+import com.rafag.stonks.android.theming.StonksColors
 
 @Composable
 fun FavedQuotesScreen(
@@ -57,9 +58,7 @@ fun FavedQuotesScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = stringResource(id = R.string.app_name)) },
-                backgroundColor = Color.Blue,
-                contentColor = Color.White,
+                title = { Text(text = stringResource(id = R.string.your_stonks)) },
                 elevation = 12.dp
             )
         }, content = {
@@ -119,7 +118,7 @@ private fun Item(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(16.dp))
-                    .background(if (item.isUp) Color.Green else Color.Red)
+                    .background(if (item.isUp) StonksColors.green400 else StonksColors.red700)
                     .padding(4.dp)
             ) {
                 Text(
@@ -155,7 +154,7 @@ private fun Delete(modifier: Modifier) {
     Icon(
         Filled.Delete,
         contentDescription = "",
-        tint = Color.DarkGray,
+        tint = StonksColors.gray600,
         modifier = modifier
             .size(24.dp)
     )

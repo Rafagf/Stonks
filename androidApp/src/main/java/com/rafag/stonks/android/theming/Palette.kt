@@ -10,9 +10,12 @@ object StonksColors {
     val yellow600 = Color(0xFFbcc03a)
     val yellow900 = Color(0xFF7c6f22)
     val red700 = Color(0xFFc94043)
+    val green400 = Color(0xFF16CC64)
     val white = Color(0xFFFFFFFF)
     val black600 = Color(0xFF293749)
     val black200 = Color(0xFF001122)
+    val gray200 = Color(0xFFd6d8d8)
+    val gray600 = Color(0xFF6a6c6c)
 }
 
 val lightColors = lightColors(
