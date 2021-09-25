@@ -1,4 +1,4 @@
-package com.rafag.stonks.android.theming
+package com.rafag.stonks.android.design.theming
 
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors

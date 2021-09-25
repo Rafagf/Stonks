@@ -43,9 +43,9 @@ import com.rafag.stonks.android.faved.presentation.FavedState
 import com.rafag.stonks.android.faved.presentation.FavedState.*
 import com.rafag.stonks.android.faved.presentation.FavedViewModel
 import com.rafag.stonks.android.navigation.NAVIGATE_TO_SEARCH_STONKS_SCREEN
-import com.rafag.stonks.android.theming.StonksColors
-import com.rafag.stonks.android.theming.StonksText
-import com.rafag.stonks.android.theming.StonksText.BodyBigBold
+import com.rafag.stonks.android.design.theming.StonksColors
+import com.rafag.stonks.android.design.theming.StonksText
+import com.rafag.stonks.android.design.theming.StonksText.BodyBigBold
 
 @Composable
 fun FavedQuotesScreen(

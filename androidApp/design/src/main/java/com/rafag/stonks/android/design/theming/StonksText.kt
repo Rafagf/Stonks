@@ -1,4 +1,4 @@
-package com.rafag.stonks.android.theming
+package com.rafag.stonks.android.design.theming
 
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -7,7 +7,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.font.FontWeight.*
 import androidx.compose.ui.text.style.TextAlign
 
 object StonksText {

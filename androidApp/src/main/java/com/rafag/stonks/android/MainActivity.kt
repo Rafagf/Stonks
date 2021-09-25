@@ -8,7 +8,7 @@ import androidx.compose.material.Scaffold
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.rafag.stonks.android.navigation.ComposeNavigation
-import com.rafag.stonks.android.theming.StonksTheme
+import com.rafag.stonks.android.design.theming.StonksTheme
 
 class MainActivity : ComponentActivity() {
 
