@@ -5,6 +5,7 @@ import com.rafag.stonks.domain.repositories.QuoteRepository
 import com.rafag.stonks.fixtures.QuoteFixture
 import com.rafag.stonks.internal.data.quote.ErrorFetchingQuote
 import com.rafag.stonks.internal.data.quote.QuotePersistence
+import com.rafag.stonks.internal.data.quote.QuoteRepositoryImpl
 import com.rafag.stonks.mock
 import com.rafag.stonks.mockHttp
 import com.rafag.stonks.runBlocking
@@ -25,7 +26,7 @@ class QuoteRepositoryTest {
     private val httpClient = mockHttp()
     private val persistence = mock<QuotePersistence>()
 
-    private val repository = QuoteRepository(httpClient.instance, persistence)
+    private val repository = QuoteRepositoryImpl(httpClient.instance, persistence)
 
     @Test
     fun `given api success when fetching quote then return data and update persistence`() {
