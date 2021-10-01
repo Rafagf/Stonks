@@ -12,7 +12,7 @@ import kotlinx.serialization.json.Json
 
 private const val BASE_URL = "https://finnhub.io/api/v1/"
 
-class StonksHttpClient(
+internal class StonksHttpClient(
     private val client: HttpClient = defaultHttpClient(),
     private val baseUrl: String = BASE_URL,
 ) {
