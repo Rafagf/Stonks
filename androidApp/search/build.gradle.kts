@@ -4,6 +4,7 @@ plugins {
 }
 
 dependencies {
+    implementation(project(":shared"))
     implementation("com.google.android.material:material:1.4.0")
     implementation("androidx.compose.compiler:compiler:1.1.0-alpha04")
     implementation("androidx.compose.ui:ui:1.0.2")

@@ -7,6 +7,7 @@ dependencies {
     implementation(project(":shared"))
     implementation(project(":androidApp:design"))
     implementation(project(":androidApp:navigation"))
+    implementation(project(":androidApp:search"))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${properties["version.kotlinx.coroutines"]}")
     implementation("androidx.compose.compiler:compiler:1.1.0-alpha04")
     implementation("androidx.compose.ui:ui:1.0.2")
