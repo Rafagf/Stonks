@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.zip
 
-class ToggleFavouriteUseCase(
+class ToggleFavouriteUseCaseSearch(
     private val favouritesRepository: FavouritesRepository
 )  {
 

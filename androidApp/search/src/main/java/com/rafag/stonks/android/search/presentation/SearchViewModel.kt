@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rafag.stonks.android.search.domain.SearchStonksUseCase
 import com.rafag.stonks.android.search.domain.StonkSearch
-import com.rafag.stonks.android.search.domain.ToggleFavouriteUseCase
+import com.rafag.stonks.android.search.domain.ToggleFavouriteUseCaseSearch
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class SearchViewModel(
     private val searchUseCase: SearchStonksUseCase,
-    private val toggleFavouriteUseCase: ToggleFavouriteUseCase,
+    private val toggleFavouriteUseCase: ToggleFavouriteUseCaseSearch,
     ) : ViewModel() {
 
     private val _state = MutableStateFlow<SearchState>(SearchState.Loading)

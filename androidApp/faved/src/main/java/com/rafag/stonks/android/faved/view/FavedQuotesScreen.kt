@@ -28,15 +28,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.rafag.stonks.android.R
 import com.rafag.stonks.android.design.theming.StonksText.BodyBigBold
 import com.rafag.stonks.android.design.views.Delete
 import com.rafag.stonks.android.design.views.StonkQuote
+import com.rafag.stonks.android.faved.R
 import com.rafag.stonks.android.faved.presentation.FavedQuoteUi
 import com.rafag.stonks.android.faved.presentation.FavedState
 import com.rafag.stonks.android.faved.presentation.FavedState.*
 import com.rafag.stonks.android.faved.presentation.FavedViewModel
-import com.rafag.stonks.android.navigation.NAVIGATE_TO_SEARCH_STONKS_SCREEN
+
+//todo temporary
+const val NAVIGATE_TO_FAVED_QUOTES_SCREEN = "faved_quotes_screen"
+const val NAVIGATE_TO_SEARCH_STONKS_SCREEN = "search_stonks_screen"
+
 
 @Composable
 fun FavedQuotesScreen(
