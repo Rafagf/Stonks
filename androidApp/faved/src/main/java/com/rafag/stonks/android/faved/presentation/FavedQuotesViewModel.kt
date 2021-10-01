@@ -2,9 +2,9 @@ package com.rafag.stonks.android.faved.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rafag.stonks.domain.FavedQuote
-import com.rafag.stonks.domain.FetchFavedQuotesUseCase
-import com.rafag.stonks.domain.ToggleFavouriteUseCase
+import com.rafag.stonks.domain.usecases.FavedQuote
+import com.rafag.stonks.domain.usecases.FetchFavedQuotesUseCase
+import com.rafag.stonks.domain.usecases.ToggleFavouriteUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect

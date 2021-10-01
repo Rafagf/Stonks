@@ -4,7 +4,7 @@ import android.app.Application
 import com.rafag.stonks.android.StonksApplication
 import com.rafag.stonks.android.faved.presentation.FavedViewModel
 import com.rafag.stonks.android.search.presentation.SearchViewModel
-import com.rafag.stonks.domain.UseCasesProvider
+import com.rafag.stonks.domain.usecases.UseCasesProvider
 
 /**
  * Doing Manual DI for simplicity, migrate to Dagger Hilt

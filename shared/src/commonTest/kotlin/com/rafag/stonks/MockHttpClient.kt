@@ -1,7 +1,8 @@
 package com.rafag.stonks
 
-import com.rafag.stonks.api.StonksHttpClient
-import com.rafag.stonks.api.internal.HttpRequest
+import com.rafag.stonks.internal.api.StonksHttpClient
+import com.rafag.stonks.internal.api.API_TOKEN
+import com.rafag.stonks.internal.api.HttpRequest
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.HttpClientEngineBase
 import io.ktor.client.engine.HttpClientEngineConfig

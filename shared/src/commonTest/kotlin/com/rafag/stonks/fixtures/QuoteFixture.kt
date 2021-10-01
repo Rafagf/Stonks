@@ -1,7 +1,7 @@
 package com.rafag.stonks.fixtures
 
-import com.rafag.stonks.api.internal.ApiQuoteResponse
-import com.rafag.stonks.data.quote.Quote
+import com.rafag.stonks.internal.api.ApiQuoteResponse
+import com.rafag.stonks.domain.repositories.Quote
 import com.stonks.db.DbQuote
 
 internal object QuoteFixture {
