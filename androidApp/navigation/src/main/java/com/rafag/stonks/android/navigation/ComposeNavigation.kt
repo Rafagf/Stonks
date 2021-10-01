@@ -23,7 +23,12 @@ fun ComposeNavigation(
         startDestination = NAVIGATE_TO_FAVED_QUOTES_SCREEN
     ) {
         composable(NAVIGATE_TO_FAVED_QUOTES_SCREEN) {
-            FavedQuotesScreen(navController = navController, viewModel = favedQuotesViewModel)
+            FavedQuotesScreen(
+                viewModel = favedQuotesViewModel,
+                onNavigateToSearch = {
+                    navController.navigate(NAVIGATE_TO_SEARCH_STONKS_SCREEN)
+                }
+            )
         }
         composable(NAVIGATE_TO_SEARCH_STONKS_SCREEN) {
             SearchStonksScreen(viewModel = searchViewModel)

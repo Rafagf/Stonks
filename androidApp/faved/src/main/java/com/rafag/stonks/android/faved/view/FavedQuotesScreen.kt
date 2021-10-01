@@ -27,7 +27,6 @@ import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.rafag.stonks.android.design.theming.StonksText.BodyBigBold
 import com.rafag.stonks.android.design.views.Delete
 import com.rafag.stonks.android.design.views.StonkQuote
@@ -37,15 +36,10 @@ import com.rafag.stonks.android.faved.presentation.FavedState
 import com.rafag.stonks.android.faved.presentation.FavedState.*
 import com.rafag.stonks.android.faved.presentation.FavedViewModel
 
-//todo temporary
-const val NAVIGATE_TO_FAVED_QUOTES_SCREEN = "faved_quotes_screen"
-const val NAVIGATE_TO_SEARCH_STONKS_SCREEN = "search_stonks_screen"
-
-
 @Composable
 fun FavedQuotesScreen(
-    navController: NavController,
     viewModel: FavedViewModel,
+    onNavigateToSearch: () -> Unit
 ) {
     val state by viewModel.state.collectAsState()
 
@@ -68,7 +62,7 @@ fun FavedQuotesScreen(
                     Loading -> Text("Loading")
                 }
                 SearchButton {
-                    navController.navigate(NAVIGATE_TO_SEARCH_STONKS_SCREEN)
+                    onNavigateToSearch()
                 }
             }
         })
