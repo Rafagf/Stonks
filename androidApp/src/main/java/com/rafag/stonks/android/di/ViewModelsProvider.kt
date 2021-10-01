@@ -12,12 +12,12 @@ class ViewModelsProvider(useCasesProvider: UseCasesProvider) {
 
     val searchViewModel = SearchViewModel(
         searchUseCase = useCasesProvider.searchStonksUseCase,
-        toggleFavouriteUseCase = useCasesProvider.toggleFavouriteUseCaseSearch,
+        toggleFavouriteUseCase = useCasesProvider.toggleFavouriteUseCase,
     )
 
     val favedViewModel = FavedViewModel(
         fetchFavedQuotesUseCase = useCasesProvider.fetchSavedQuotesUseCase,
-        toggleFavouriteUseCase = useCasesProvider.toggleFavouriteUseCaseFaved,
+        toggleFavouriteUseCase = useCasesProvider.toggleFavouriteUseCase,
     )
 }
 

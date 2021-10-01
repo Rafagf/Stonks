@@ -1,9 +1,10 @@
-package com.rafag.stonks.android.faved.domain
+package com.rafag.stonks.domain
 
 import com.rafag.stonks.data.favourites.FavouritesRepository
 import com.rafag.stonks.data.quote.Quote
 import com.rafag.stonks.data.quote.QuoteRepository
 import com.rafag.stonks.data.quote.internal.ErrorFetchingQuote
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.flowOf
@@ -14,6 +15,7 @@ class FetchFavedQuotesUseCase(
     private val favouritesRepository: FavouritesRepository
 ) {
 
+    @OptIn(FlowPreview::class)
     suspend fun invoke(): Flow<List<FavedQuote>> {
         return favouritesRepository.getAll().flatMapConcat {
             quotes(it).map {

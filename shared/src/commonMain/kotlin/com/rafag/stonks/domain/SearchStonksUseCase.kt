@@ -1,4 +1,4 @@
-package com.rafag.stonks.android.search.domain
+package com.rafag.stonks.domain
 
 import com.rafag.stonks.data.favourites.FavouritesRepository
 import com.rafag.stonks.data.search.SearchItem

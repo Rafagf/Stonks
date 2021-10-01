@@ -2,9 +2,10 @@ package com.rafag.stonks.android.faved.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rafag.stonks.android.faved.domain.FavedQuote
-import com.rafag.stonks.android.faved.domain.FetchFavedQuotesUseCase
-import com.rafag.stonks.android.faved.domain.ToggleFavouriteUseCase
+import com.rafag.stonks.domain.FavedQuote
+import com.rafag.stonks.domain.FetchFavedQuotesUseCase
+import com.rafag.stonks.domain.ToggleFavouriteUseCase
+import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
@@ -13,16 +14,16 @@ import kotlinx.coroutines.launch
 class FavedViewModel(
     private val fetchFavedQuotesUseCase: FetchFavedQuotesUseCase,
     private val toggleFavouriteUseCase: ToggleFavouriteUseCase,
-    ) : ViewModel() {
+) : ViewModel() {
 
     private val _state = MutableStateFlow<FavedState>(FavedState.Loading)
     val state: StateFlow<FavedState> get() = _state
 
     fun load() {
         viewModelScope.launch {
-            fetchFavedQuotesUseCase.invoke().collect { favedStonks ->
+            fetchFavedQuotesUseCase.invoke().collect { favedQuotes ->
                 _state.value = FavedState.Content(
-                    quotes = favedStonks.map {
+                    quotes = favedQuotes.map {
                         it.toFavedQuoteUi()
                     }
                 )

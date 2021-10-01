@@ -10,7 +10,6 @@ import com.rafag.stonks.android.di.ViewModelsProvider
  */
 class StonksApplication : Application() {
 
-    val repositoryProvider = RepositoryProvider(this)
-    val useCaseProvider = UseCasesProvider(repositoryProvider)
+    val useCaseProvider = UseCasesProvider(this)
     val viewModelsProvider = ViewModelsProvider(useCaseProvider)
 }
