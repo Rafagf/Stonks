@@ -7,8 +7,8 @@ import androidx.compose.material.Scaffold
 import androidx.navigation.compose.rememberNavController
 import com.rafag.stonks.android.design.TintStatusBar
 import com.rafag.stonks.android.design.theming.StonksTheme
-import com.rafag.stonks.android.di.favedQuotesViewModel
-import com.rafag.stonks.android.di.searchStonksViewModel
+import com.rafag.stonks.android.di.favedViewModel
+import com.rafag.stonks.android.di.searchViewModel
 import com.rafag.stonks.android.navigation.ComposeNavigation
 
 class MainActivity : ComponentActivity() {
@@ -24,8 +24,8 @@ class MainActivity : ComponentActivity() {
                 Scaffold {
                     ComposeNavigation(
                         navController = navController,
-                        searchViewModel = application.searchStonksViewModel(),
-                        favedQuotesViewModel = application.favedQuotesViewModel()
+                        searchViewModel = application.searchViewModel(),
+                        favedQuotesViewModel = application.favedViewModel()
                     )
                 }
             }

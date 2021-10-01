@@ -21,5 +21,5 @@ class ViewModelsProvider(useCasesProvider: UseCasesProvider) {
     )
 }
 
-fun Application.searchStonksViewModel() = (this as StonksApplication).viewModelsProvider.searchViewModel
-fun Application.favedQuotesViewModel() = (this as StonksApplication).viewModelsProvider.favedViewModel
+fun Application.searchViewModel() = (this as StonksApplication).viewModelsProvider.searchViewModel
+fun Application.favedViewModel() = (this as StonksApplication).viewModelsProvider.favedViewModel
