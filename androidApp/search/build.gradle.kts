@@ -5,12 +5,14 @@ plugins {
 
 dependencies {
     implementation(project(":shared"))
-    implementation("com.google.android.material:material:1.4.0")
+    implementation(project(":androidApp:design"))
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${properties["version.kotlinx.coroutines"]}")
     implementation("androidx.compose.compiler:compiler:1.1.0-alpha04")
     implementation("androidx.compose.ui:ui:1.0.2")
     implementation("androidx.compose.ui:ui-text:1.0.2")
     implementation("androidx.compose.foundation:foundation:1.0.2")
     implementation("androidx.compose.material:material:1.0.2")
+    implementation("androidx.activity:activity-compose:1.3.1")
     implementation("androidx.compose.ui:ui-tooling:1.0.1") {
         version {
             strictly("1.0.0-beta09")
