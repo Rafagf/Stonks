@@ -4,6 +4,8 @@ plugins {
 }
 
 dependencies {
+    implementation(project(":androidApp:search"))
+    implementation(project(":androidApp:faved"))
     implementation("com.google.android.material:material:1.4.0")
     implementation("androidx.compose.compiler:compiler:1.1.0-alpha04")
     implementation("androidx.compose.ui:ui:1.0.2")
@@ -11,6 +13,7 @@ dependencies {
     implementation("androidx.compose.foundation:foundation:1.0.2")
     implementation("androidx.compose.material:material:1.0.2")
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.18.0")
+    implementation("androidx.navigation:navigation-compose:2.4.0-alpha09")
     implementation("androidx.compose.ui:ui-tooling:1.0.1") {
         version {
             strictly("1.0.0-beta09")
