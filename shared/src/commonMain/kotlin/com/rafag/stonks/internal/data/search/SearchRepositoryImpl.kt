@@ -14,9 +14,9 @@ internal class SearchRepositoryImpl(
     private val httpClient: StonksHttpClient
 ) : SearchRepository {
 
-    override suspend fun search(symbol: String): Flow<Search> {
+    override suspend fun search(symbol: String): Search {
         try {
-            return flowOf(httpClient.execute(SearchApi.searchRequest(symbol)).toModel())
+            return httpClient.execute(SearchApi.searchRequest(symbol)).toModel()
         } catch (exception: Exception) {
             throw ErrorSearching(symbol, exception)
         }

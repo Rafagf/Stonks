@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="error_title">Oops something went wrong!</string>
+  <string name="search_bar">Search symbol...</string>
 </resources>

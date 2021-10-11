@@ -5,28 +5,49 @@ import androidx.lifecycle.viewModelScope
 import com.rafag.stonks.domain.usecases.SearchStonksUseCase
 import com.rafag.stonks.domain.usecases.StonkSearch
 import com.rafag.stonks.domain.usecases.ToggleFavouriteUseCase
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.launch
+
+private const val DEBOUNCE_DELAY = 1000L
 
 class SearchViewModel(
     private val searchUseCase: SearchStonksUseCase,
     private val toggleFavouriteUseCase: ToggleFavouriteUseCase,
-    ) : ViewModel() {
+) : ViewModel() {
 
-    private val _state = MutableStateFlow<SearchState>(SearchState.Loading)
+    private val _state = MutableStateFlow<SearchState>(SearchState.Idle(MutableStateFlow("")))
     val state: StateFlow<SearchState> get() = _state
 
-    fun search(query: String) {
+    init {
+        setSearchQueryListener()
+    }
+
+    private fun setSearchQueryListener() {
         viewModelScope.launch {
-            searchUseCase.invoke(query).collect { searchStonks ->
-                _state.value = SearchState.Content(
-                    searchStonks = searchStonks.map {
-                        it.toSearchStonkUiItem()
-                    }
-                )
-            }
+            _state.value.searchQuery
+                .debounce(DEBOUNCE_DELAY)
+                .filter { query -> return@filter query.isNotEmpty() }
+                .distinctUntilChanged()
+                .flatMapLatest { query ->
+                    _state.value = SearchState.Loading(_state.value.searchQuery)
+                    searchUseCase.invoke(query)
+                }
+                .catch { _state.value = SearchState.Error(_state.value.searchQuery) }
+                .collect {
+                    _state.value = SearchState.Content(
+                        searchStonks = it.toSearchStonkUi(),
+                        searchQuery = _state.value.searchQuery
+                    )
+                }
         }
     }
 
@@ -42,6 +63,8 @@ class SearchViewModel(
         }
     }
 
+    private fun List<StonkSearch>.toSearchStonkUi() = this.map { it.toSearchStonkUiItem() }
+
     private fun StonkSearch.toSearchStonkUiItem() = SearchStonkUi(
         name = name,
         symbol = symbol,
@@ -55,8 +78,12 @@ data class SearchStonkUi(
     val faved: Boolean,
 )
 
-sealed class SearchState {
-    object Loading : SearchState()
-    object Error : SearchState()
-    data class Content(val searchStonks: List<SearchStonkUi>) : SearchState()
+sealed class SearchState(open val searchQuery: MutableStateFlow<String>) {
+    data class Idle(override val searchQuery: MutableStateFlow<String>) : SearchState(searchQuery)
+    data class Loading(override val searchQuery: MutableStateFlow<String>) : SearchState(searchQuery)
+    data class Error(override val searchQuery: MutableStateFlow<String>) : SearchState(searchQuery)
+    data class Content(
+        val searchStonks: List<SearchStonkUi>,
+        override val searchQuery: MutableStateFlow<String>
+    ) : SearchState(searchQuery)
 }

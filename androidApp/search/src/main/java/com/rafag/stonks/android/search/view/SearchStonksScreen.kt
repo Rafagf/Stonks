@@ -19,6 +19,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.rafag.stonks.android.design.theming.StonksText
 import com.rafag.stonks.android.design.theming.StonksText.BodyMedium
+import com.rafag.stonks.android.design.views.Error
 import com.rafag.stonks.android.design.views.Faved
 import com.rafag.stonks.android.design.views.Loading
 import com.rafag.stonks.android.design.views.NotFaved
@@ -34,7 +35,9 @@ fun SearchStonksScreen(viewModel: SearchViewModel) {
     val state by viewModel.state.collectAsState()
 
     Column {
-        SearchBar(textState, viewModel::search)
+        SearchBar(textState) { query ->
+            viewModel.state.value.searchQuery.value = query
+        }
         SearchStonkList(state, viewModel::onStonkFaved, viewModel::onStonkUnfaved)
     }
 }
@@ -46,26 +49,39 @@ fun SearchStonkList(
     onToggleUnfaved: (SearchStonkUi) -> Unit
 ) {
     when (state) {
+        is Idle -> Text("Idle")
+        is Loading -> Loading()
         is Content -> Content(state, onToggleFaved, onToggleUnfaved)
-        Error -> Text("Error state")
-        Loading -> Loading()
+        is Error -> Error {
+            //todo
+        }
     }
 }
 
 @Composable
-private fun Content(state: Content,
+private fun Content(
+    state: Content,
     onToggleFaved: (SearchStonkUi) -> Unit,
     onToggleUnfaved: (SearchStonkUi) -> Unit
 ) {
-    LazyColumn(modifier = Modifier.fillMaxWidth()) {
-        items(state.searchStonks) { stonk ->
-            ListItem(
-                item = stonk,
-                onToggleFaved = onToggleFaved,
-                onToggleUnfaved = onToggleUnfaved,
-            )
+    if (state.searchStonks.isEmpty()) {
+        EmptyState()
+    } else {
+        LazyColumn(modifier = Modifier.fillMaxWidth()) {
+            items(state.searchStonks) { stonk ->
+                ListItem(
+                    item = stonk,
+                    onToggleFaved = onToggleFaved,
+                    onToggleUnfaved = onToggleUnfaved,
+                )
+            }
         }
     }
+}
+
+@Composable
+private fun EmptyState() {
+    Text("No symbols found")
 }
 
 @Composable

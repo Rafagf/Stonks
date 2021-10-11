@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -17,8 +18,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import com.rafag.stonks.android.design.R
 
 //Kudos to https://johncodeos.com/how-to-add-search-in-list-with-jetpack-compose/
 
@@ -31,7 +34,10 @@ fun SearchBar(state: MutableState<TextFieldValue>, onSearchQueryChanged: (String
             state.value = value
             onSearchQueryChanged(value.text)
         },
-        modifier = Modifier.fillMaxWidth().focusRequester(focusRequester),
+        label = { Text(stringResource(id = R.string.search_bar)) },
+        modifier = Modifier
+            .fillMaxWidth()
+            .focusRequester(focusRequester),
         textStyle = MaterialTheme.typography.h3,
         leadingIcon = {
             Icon(
