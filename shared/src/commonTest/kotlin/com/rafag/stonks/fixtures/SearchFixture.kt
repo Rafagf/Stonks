@@ -1,5 +1,7 @@
 package com.rafag.stonks.fixtures
 
+import com.rafag.stonks.domain.repositories.Search
+import com.rafag.stonks.domain.repositories.SearchItem
 import com.rafag.stonks.internal.api.ApiSearchItemResponse
 import com.rafag.stonks.internal.api.ApiSearchResponse
 
@@ -14,5 +16,16 @@ internal object SearchFixture {
         displaySymbol = "a-display-symbol",
         symbol = "symbol",
         type = "a-type"
+    )
+
+    fun aSearch(list: List<SearchItem> = emptyList()) = Search(
+        list = list
+    )
+
+    fun aSearchItem(symbol: String, name: String) = SearchItem(
+        symbol = symbol,
+        name = name,
+        displaySymbol = symbol,
+        type = "type"
     )
 }
