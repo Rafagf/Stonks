@@ -7,6 +7,7 @@ import com.rafag.stonks.domain.usecases.FetchFavedQuotesUseCase
 import com.rafag.stonks.domain.usecases.ToggleFavouriteUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -20,13 +21,15 @@ class FavedViewModel(
 
     fun load() {
         viewModelScope.launch {
-            fetchFavedQuotesUseCase.invoke().collect { favedQuotes ->
-                _state.value = FavedState.Content(
-                    quotes = favedQuotes.map {
-                        it.toFavedQuoteUi()
-                    }
-                )
-            }
+            fetchFavedQuotesUseCase.invoke()
+                .catch { _state.value = FavedState.Error }
+                .collect { favedQuotes ->
+                    _state.value = FavedState.Content(
+                        quotes = favedQuotes.map {
+                            it.toFavedQuoteUi()
+                        }
+                    )
+                }
         }
     }
 

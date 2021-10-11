@@ -29,6 +29,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.rafag.stonks.android.design.theming.StonksText.BodyBigBold
 import com.rafag.stonks.android.design.views.Delete
+import com.rafag.stonks.android.design.views.Error
 import com.rafag.stonks.android.design.views.Loading
 import com.rafag.stonks.android.design.views.StonkQuote
 import com.rafag.stonks.android.faved.R
@@ -59,7 +60,7 @@ fun FavedQuotesScreen(
             Box(modifier = Modifier.fillMaxSize()) {
                 when (state) {
                     is Content -> Content(state as Content, viewModel::onDeleteStonkClicked)
-                    Error -> Text("Error")
+                    Error -> Error { viewModel.load() }
                     Loading -> Loading()
                 }
                 SearchButton {
