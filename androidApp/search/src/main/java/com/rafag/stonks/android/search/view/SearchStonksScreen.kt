@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.rafag.stonks.android.design.theming.StonksText
 import com.rafag.stonks.android.design.theming.StonksText.BodyMedium
 import com.rafag.stonks.android.design.views.Faved
+import com.rafag.stonks.android.design.views.Loading
 import com.rafag.stonks.android.design.views.NotFaved
 import com.rafag.stonks.android.design.views.SearchBar
 import com.rafag.stonks.android.search.presentation.SearchState
@@ -47,7 +48,7 @@ fun SearchStonkList(
     when (state) {
         is Content -> Content(state, onToggleFaved, onToggleUnfaved)
         Error -> Text("Error state")
-        Loading -> Text("Loading state")
+        Loading -> Loading()
     }
 }
 
