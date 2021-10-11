@@ -1,8 +1,10 @@
 package com.rafag.stonks.android.search.view
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -15,6 +17,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.rafag.stonks.android.design.theming.StonksText
@@ -24,6 +27,7 @@ import com.rafag.stonks.android.design.views.Faved
 import com.rafag.stonks.android.design.views.Loading
 import com.rafag.stonks.android.design.views.NotFaved
 import com.rafag.stonks.android.design.views.SearchBar
+import com.rafag.stonks.android.search.R
 import com.rafag.stonks.android.search.presentation.SearchState
 import com.rafag.stonks.android.search.presentation.SearchState.*
 import com.rafag.stonks.android.search.presentation.SearchStonkUi
@@ -49,7 +53,6 @@ fun SearchStonkList(
     onToggleUnfaved: (SearchStonkUi) -> Unit
 ) {
     when (state) {
-        is Idle -> Text("Idle")
         is Loading -> Loading()
         is Content -> Content(state, onToggleFaved, onToggleUnfaved)
         is Error -> Error {
@@ -65,7 +68,7 @@ private fun Content(
     onToggleUnfaved: (SearchStonkUi) -> Unit
 ) {
     if (state.searchStonks.isEmpty()) {
-        EmptyState()
+        EmptyState(state.searchQuery.value.isBlank())
     } else {
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
             items(state.searchStonks) { stonk ->
@@ -80,8 +83,17 @@ private fun Content(
 }
 
 @Composable
-private fun EmptyState() {
-    Text("No symbols found")
+private fun EmptyState(blank: Boolean) {
+    val text = if (blank) {
+        stringResource(id = R.string.search_empty_state)
+    } else stringResource(id = R.string.search_no_matches)
+
+    Box(Modifier.fillMaxSize()) {
+        Text(
+            text = text,
+            modifier = Modifier.align(Alignment.Center)
+        )
+    }
 }
 
 @Composable

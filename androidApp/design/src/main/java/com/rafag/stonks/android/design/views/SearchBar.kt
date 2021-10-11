@@ -34,7 +34,6 @@ fun SearchBar(state: MutableState<TextFieldValue>, onSearchQueryChanged: (String
             state.value = value
             onSearchQueryChanged(value.text)
         },
-        label = { Text(stringResource(id = R.string.search_bar)) },
         modifier = Modifier
             .fillMaxWidth()
             .focusRequester(focusRequester),

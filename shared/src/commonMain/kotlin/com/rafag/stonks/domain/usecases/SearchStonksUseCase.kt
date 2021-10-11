@@ -5,6 +5,7 @@ import com.rafag.stonks.domain.repositories.SearchItem
 import com.rafag.stonks.domain.repositories.SearchRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.flowOf
 
 class SearchStonksUseCase(
@@ -13,6 +14,7 @@ class SearchStonksUseCase(
 ) {
 
     suspend fun invoke(query: String): Flow<List<StonkSearch>> {
+        if (query.isEmpty()) return flowOf(emptyList())
         val searchSource = flowOf(searchRepository.search(query))
         val favsSource = favouritesRepository.getAll()
         return searchSource.combine(favsSource) { search, favs ->

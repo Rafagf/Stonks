@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 
 private const val DEBOUNCE_DELAY = 1000L
@@ -24,7 +25,12 @@ class SearchViewModel(
     private val toggleFavouriteUseCase: ToggleFavouriteUseCase,
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow<SearchState>(SearchState.Idle(MutableStateFlow("")))
+    private val _state = MutableStateFlow<SearchState>(
+        SearchState.Content(
+            searchStonks = emptyList(),
+            searchQuery = MutableStateFlow("")
+        )
+    )
     val state: StateFlow<SearchState> get() = _state
 
     init {
@@ -35,7 +41,6 @@ class SearchViewModel(
         viewModelScope.launch {
             _state.value.searchQuery
                 .debounce(DEBOUNCE_DELAY)
-                .filter { query -> return@filter query.isNotEmpty() }
                 .distinctUntilChanged()
                 .flatMapLatest { query ->
                     _state.value = SearchState.Loading(_state.value.searchQuery)
@@ -79,7 +84,6 @@ data class SearchStonkUi(
 )
 
 sealed class SearchState(open val searchQuery: MutableStateFlow<String>) {
-    data class Idle(override val searchQuery: MutableStateFlow<String>) : SearchState(searchQuery)
     data class Loading(override val searchQuery: MutableStateFlow<String>) : SearchState(searchQuery)
     data class Error(override val searchQuery: MutableStateFlow<String>) : SearchState(searchQuery)
     data class Content(
