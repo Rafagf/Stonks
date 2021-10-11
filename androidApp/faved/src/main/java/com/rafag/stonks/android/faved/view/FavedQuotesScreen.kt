@@ -1,6 +1,7 @@
 package com.rafag.stonks.android.faved.view
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Row
@@ -18,10 +19,12 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Modifier
@@ -89,11 +92,11 @@ private fun Content(state: FavedState.Content, onDeleteClicked: (FavedQuoteUi) -
     if (state.quotes.isEmpty()) {
         EmptyState()
     } else {
-    LazyColumn {
-        items(state.quotes) { item ->
-            StonkItem(item, onDeleteClicked)
+        LazyColumn {
+            items(state.quotes) { item ->
+                StonkItem(item, onDeleteClicked)
+            }
         }
-    }
     }
 }
 
@@ -139,7 +142,10 @@ private fun StonkItem(
             Delete(
                 modifier = Modifier
                     .align(alignment = Center)
-                    .clickable {
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = rememberRipple(bounded = false),
+                    ) {
                         onDeleteStonkClicked(item)
                     }
             )

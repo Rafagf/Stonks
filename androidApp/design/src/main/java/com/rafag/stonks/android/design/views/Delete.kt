@@ -16,6 +16,6 @@ fun Delete(modifier: Modifier) {
         contentDescription = "",
         tint = StonksColors.gray600,
         modifier = modifier
-            .size(24.dp)
+            .size(32.dp)
     )
 }
