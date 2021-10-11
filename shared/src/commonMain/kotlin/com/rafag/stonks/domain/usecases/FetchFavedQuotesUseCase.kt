@@ -17,11 +17,9 @@ class FetchFavedQuotesUseCase(
 
     @OptIn(FlowPreview::class)
     suspend fun invoke(): Flow<List<FavedQuote>> {
-        return favouritesRepository.getAll().flatMapConcat {
-            quotes(it).map {
-                it.map {
-                    FavedQuote(it.symbol, it.current, it.open)
-                }
+        return favouritesRepository.getAll().flatMapConcat { favedSymbols ->
+            quotes(favedSymbols).map { quotes ->
+                quotes.toFavedQuote()
             }
         }
     }
@@ -41,6 +39,14 @@ class FetchFavedQuotesUseCase(
         })
     }
 }
+
+fun List<Quote>.toFavedQuote() = this.map { it.toFavedQuote() }
+
+fun Quote.toFavedQuote() = FavedQuote(
+    symbol = this.symbol,
+    current = this.current,
+    open = this.open,
+)
 
 data class FavedQuote(
     val symbol: String,
