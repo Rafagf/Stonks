@@ -27,6 +27,7 @@ import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.rafag.stonks.android.design.theming.StonksText
 import com.rafag.stonks.android.design.theming.StonksText.BodyBigBold
 import com.rafag.stonks.android.design.views.Delete
 import com.rafag.stonks.android.design.views.Error
@@ -85,10 +86,24 @@ private fun BoxScope.SearchButton(onClick: () -> Unit) {
 
 @Composable
 private fun Content(state: FavedState.Content, onDeleteClicked: (FavedQuoteUi) -> Unit) {
+    if (state.quotes.isEmpty()) {
+        EmptyState()
+    } else {
     LazyColumn {
         items(state.quotes) { item ->
             StonkItem(item, onDeleteClicked)
         }
+    }
+    }
+}
+
+@Composable
+private fun EmptyState() {
+    Box(Modifier.fillMaxSize()) {
+        StonksText.BodyBig(
+            text = stringResource(id = R.string.no_stonks_yet),
+            modifier = Modifier.align(Alignment.Center)
+        )
     }
 }
 

@@ -105,7 +105,7 @@ private fun EmptyState(blank: Boolean) {
     } else stringResource(id = R.string.search_no_matches)
 
     Box(Modifier.fillMaxSize()) {
-        Text(
+        StonksText.BodyBig(
             text = text,
             modifier = Modifier.align(Alignment.Center)
         )

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="my_stonks">My stonks</string>
+  <string name="no_stonks_yet">No stonks added yet! 📈 </string>
 </resources>
