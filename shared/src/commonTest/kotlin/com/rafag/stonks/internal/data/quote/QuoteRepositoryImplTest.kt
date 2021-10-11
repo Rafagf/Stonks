@@ -1,10 +1,7 @@
-package com.rafag.stonks.internal.data.quote.internal
+package com.rafag.stonks.internal.data.quote
 
 import com.rafag.stonks.internal.api.QuoteApi
 import com.rafag.stonks.fixtures.QuoteFixture
-import com.rafag.stonks.internal.data.quote.ErrorFetchingQuote
-import com.rafag.stonks.internal.data.quote.QuotePersistence
-import com.rafag.stonks.internal.data.quote.QuoteRepositoryImpl
 import com.rafag.stonks.mock
 import com.rafag.stonks.mockHttp
 import com.rafag.stonks.runBlocking
@@ -18,7 +15,6 @@ private const val A_SYMBOL = "AAPL"
 
 private val AN_API_QUOTE = QuoteFixture.anApiQuote()
 private val A_DB_QUOTE = QuoteFixture.aDbQuote(A_SYMBOL)
-private val A_QUOTE = QuoteFixture.aQuote(A_SYMBOL)
 
 class QuoteRepositoryImplTest {
 
@@ -35,7 +31,7 @@ class QuoteRepositoryImplTest {
         val result = runBlocking { repository.quote(A_SYMBOL) }
 
         verify(persistence).upsert(A_SYMBOL, AN_API_QUOTE)
-        assertEquals(result, A_QUOTE)
+        assertEquals(result, AN_API_QUOTE.toModel(A_SYMBOL))
     }
 
     @Test
@@ -47,7 +43,7 @@ class QuoteRepositoryImplTest {
 
         val result = runBlocking { repository.quote(A_SYMBOL) }
 
-        assertEquals(result, A_QUOTE)
+        assertEquals(result, A_DB_QUOTE.toModel())
     }
 
     @Test

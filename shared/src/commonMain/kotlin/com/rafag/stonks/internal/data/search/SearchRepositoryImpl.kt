@@ -7,17 +7,26 @@ import com.rafag.stonks.internal.api.SearchApi
 import com.rafag.stonks.domain.repositories.Search
 import com.rafag.stonks.domain.repositories.SearchItem
 import com.rafag.stonks.domain.repositories.SearchRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 
 internal class SearchRepositoryImpl(
     private val httpClient: StonksHttpClient
 ) : SearchRepository {
 
-    override suspend fun searchRequest(symbol: String): Search {
-        return httpClient.execute(SearchApi.searchRequest(symbol)).toModel()
+    override suspend fun search(symbol: String): Flow<Search> {
+        try {
+            return flowOf(httpClient.execute(SearchApi.searchRequest(symbol)).toModel())
+        } catch (exception: Exception) {
+            throw ErrorSearching(symbol, exception)
+        }
     }
 }
 
-private fun ApiSearchResponse.toModel() = Search(
+data class ErrorSearching(val symbol: String, override val cause: Throwable) : Throwable("Could not fetch symbols -  $cause")
+
+
+internal fun ApiSearchResponse.toModel() = Search(
     list = result.map { it.toModel() }
 )
 

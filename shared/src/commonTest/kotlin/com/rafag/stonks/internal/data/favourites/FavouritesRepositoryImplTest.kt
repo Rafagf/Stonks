@@ -1,11 +1,10 @@
-package com.rafag.stonks.internal.data.favourites.internal
+package com.rafag.stonks.internal.data.favourites
 
-import com.rafag.stonks.internal.data.favourites.FavouritesPersistence
-import com.rafag.stonks.internal.data.favourites.FavouritesRepositoryImpl
 import com.rafag.stonks.internal.data.favourites.FavouritesRepositoryImpl.*
 import com.rafag.stonks.mock
 import com.rafag.stonks.runBlocking
 import com.rafag.stonks.whenever
+import kotlinx.coroutines.flow.flowOf
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -20,7 +19,7 @@ class FavouritesRepositoryImplTest {
 
     @Test
     fun `given success when getting all saved then return list`() {
-        val expectedList = listOf(A_SYMBOL)
+        val expectedList = flowOf(listOf(A_SYMBOL))
         whenever(persistence.getAll()).thenReturn(expectedList)
 
         runBlocking {

@@ -1,8 +1,10 @@
 package com.rafag.stonks.domain.repositories
 
+import kotlinx.coroutines.flow.Flow
+
 interface SearchRepository {
 
-    suspend fun searchRequest(symbol: String): Search
+    suspend fun search(symbol: String): Flow<Search>
 }
 
 data class Search(

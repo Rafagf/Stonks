@@ -1,8 +1,5 @@
-package com.rafag.stonks
+package com.rafag.stonks.internal.api
 
-import com.rafag.stonks.internal.api.StonksHttpClient
-import com.rafag.stonks.internal.api.API_TOKEN
-import com.rafag.stonks.internal.api.HttpRequest
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.HttpClientEngineBase
 import io.ktor.client.engine.HttpClientEngineConfig
@@ -35,16 +32,16 @@ class MockHttpClient {
         }
     })
 
-    val instance = StonksHttpClient(
+    internal val instance = StonksHttpClient(
         httpClient,
         baseUrl = "https://foo.com/",
     )
 
-    fun <T : Any> addHandler(request: HttpRequest<T>, value: T) {
+    internal fun <T : Any> addHandler(request: HttpRequest<T>, value: T) {
         handlers[request] = value
     }
 
-    fun <T : Any> addHandler(request: HttpRequest<T>, value: Exception) {
+    internal fun <T : Any> addHandler(request: HttpRequest<T>, value: Exception) {
         handlers[request] = value
     }
 

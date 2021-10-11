@@ -37,7 +37,7 @@ internal class QuoteRepositoryImpl(
 
 data class ErrorFetchingQuote(val symbol: String, override val cause: Throwable) : Throwable("Could not fetch favourites -  $cause")
 
-private fun ApiQuoteResponse.toModel(symbol: String) = Quote(
+internal fun ApiQuoteResponse.toModel(symbol: String) = Quote(
     symbol = symbol,
     current = current,
     high = high,
@@ -46,7 +46,7 @@ private fun ApiQuoteResponse.toModel(symbol: String) = Quote(
     previousClose = previousClose
 )
 
-private fun DbQuote.toModel() = Quote(
+internal fun DbQuote.toModel() = Quote(
     symbol = symbol,
     current = current,
     high = high,
