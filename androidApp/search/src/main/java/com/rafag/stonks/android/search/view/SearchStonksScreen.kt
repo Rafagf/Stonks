@@ -28,7 +28,6 @@ import com.rafag.stonks.android.design.views.Loading
 import com.rafag.stonks.android.design.views.NotFaved
 import com.rafag.stonks.android.design.views.SearchBar
 import com.rafag.stonks.android.search.R
-import com.rafag.stonks.android.search.presentation.SearchState
 import com.rafag.stonks.android.search.presentation.SearchState.*
 import com.rafag.stonks.android.search.presentation.SearchStonkUi
 import com.rafag.stonks.android.search.presentation.SearchViewModel
@@ -42,21 +41,12 @@ fun SearchStonksScreen(viewModel: SearchViewModel) {
         SearchBar(textState) { query ->
             viewModel.state.value.searchQuery.value = query
         }
-        SearchStonkList(state, viewModel::onStonkFaved, viewModel::onStonkUnfaved)
-    }
-}
-
-@Composable
-fun SearchStonkList(
-    state: SearchState,
-    onToggleFaved: (SearchStonkUi) -> Unit,
-    onToggleUnfaved: (SearchStonkUi) -> Unit
-) {
-    when (state) {
-        is Loading -> Loading()
-        is Content -> Content(state, onToggleFaved, onToggleUnfaved)
-        is Error -> Error {
-            //todo
+        when (state) {
+            is Content -> Content(state as Content, viewModel::onStonkFaved, viewModel::onStonkUnfaved)
+            is Loading -> Loading()
+            is Error -> Error {
+                viewModel.state.value.searchQuery.value = ""
+            }
         }
     }
 }
@@ -83,20 +73,6 @@ private fun Content(
 }
 
 @Composable
-private fun EmptyState(blank: Boolean) {
-    val text = if (blank) {
-        stringResource(id = R.string.search_empty_state)
-    } else stringResource(id = R.string.search_no_matches)
-
-    Box(Modifier.fillMaxSize()) {
-        Text(
-            text = text,
-            modifier = Modifier.align(Alignment.Center)
-        )
-    }
-}
-
-@Composable
 private fun ListItem(
     item: SearchStonkUi,
     onToggleFaved: (SearchStonkUi) -> Unit,
@@ -119,5 +95,19 @@ private fun ListItem(
             BodyMedium(text = item.symbol)
         }
         if (item.faved) Faved() else NotFaved()
+    }
+}
+
+@Composable
+private fun EmptyState(blank: Boolean) {
+    val text = if (blank) {
+        stringResource(id = R.string.search_empty_state)
+    } else stringResource(id = R.string.search_no_matches)
+
+    Box(Modifier.fillMaxSize()) {
+        Text(
+            text = text,
+            modifier = Modifier.align(Alignment.Center)
+        )
     }
 }
