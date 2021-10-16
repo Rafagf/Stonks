@@ -49,7 +49,7 @@ private fun FavedQuote.toFavedQuoteUi() = FavedQuoteUi(
 
 private fun formatPercentageChange(percentageChange: Double): String {
     val rounded = percentageChange.roundTo(2)
-    return if (rounded > 0) "+$rounded" else rounded.toString()
+    return if (rounded > 0) "+$rounded%" else "$rounded%"
 }
 
 private fun percentageChange(initial: Double, final: Double) = ((final - initial) / initial) * 100
