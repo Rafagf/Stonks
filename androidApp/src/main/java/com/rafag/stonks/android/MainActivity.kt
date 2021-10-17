@@ -19,7 +19,6 @@ class MainActivity : ComponentActivity() {
             StonksTheme {
                 TintStatusBar()
                 val navController = rememberNavController()
-
                 val application = application as StonksApplication
                 Scaffold {
                     ComposeNavigation(

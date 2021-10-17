@@ -1,9 +1,9 @@
 package com.rafag.stonks.internal.data.repositories.search
 
 import com.rafag.stonks.internal.data.httpclient.StonksHttpClient
-import com.rafag.stonks.domain.repositories.Search
-import com.rafag.stonks.domain.repositories.SearchItem
-import com.rafag.stonks.domain.repositories.SearchRepository
+import com.rafag.stonks.internal.domain.repositories.Search
+import com.rafag.stonks.internal.domain.repositories.SearchItem
+import com.rafag.stonks.internal.domain.repositories.SearchRepository
 
 internal class SearchRepositoryImpl(
     private val httpClient: StonksHttpClient

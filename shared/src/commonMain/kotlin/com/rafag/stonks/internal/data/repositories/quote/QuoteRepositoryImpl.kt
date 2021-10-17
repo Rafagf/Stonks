@@ -1,8 +1,8 @@
 package com.rafag.stonks.internal.data.repositories.quote
 
 import com.rafag.stonks.internal.data.httpclient.StonksHttpClient
-import com.rafag.stonks.domain.repositories.Quote
-import com.rafag.stonks.domain.repositories.QuoteRepository
+import com.rafag.stonks.internal.domain.repositories.Quote
+import com.rafag.stonks.internal.domain.repositories.QuoteRepository
 import com.stonks.db.DbQuote
 
 internal class QuoteRepositoryImpl(

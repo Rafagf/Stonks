@@ -1,6 +1,6 @@
 package com.rafag.stonks.internal.data.repositories.favourites
 
-import com.rafag.stonks.domain.repositories.FavouritesRepository
+import com.rafag.stonks.internal.domain.repositories.FavouritesRepository
 import kotlinx.coroutines.flow.Flow
 
 internal class FavouritesRepositoryImpl(

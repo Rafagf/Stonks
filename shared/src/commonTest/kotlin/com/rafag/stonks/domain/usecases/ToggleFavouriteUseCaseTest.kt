@@ -1,6 +1,6 @@
 package com.rafag.stonks.domain.usecases
 
-import com.rafag.stonks.domain.repositories.FavouritesRepository
+import com.rafag.stonks.internal.domain.repositories.FavouritesRepository
 import com.rafag.stonks.mock
 import com.rafag.stonks.runBlocking
 import com.rafag.stonks.verify

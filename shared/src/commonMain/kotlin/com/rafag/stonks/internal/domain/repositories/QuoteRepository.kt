@@ -1,6 +1,6 @@
-package com.rafag.stonks.domain.repositories
+package com.rafag.stonks.internal.domain.repositories
 
-interface QuoteRepository {
+internal interface QuoteRepository {
 
     suspend fun quote(symbol: String): Quote
 }

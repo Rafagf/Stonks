@@ -1,12 +1,11 @@
 package com.rafag.stonks.domain.usecases
 
-import com.rafag.stonks.domain.repositories.FavouritesRepository
+import com.rafag.stonks.internal.domain.repositories.FavouritesRepository
 import com.rafag.stonks.fixtures.QuoteFixture
 import com.rafag.stonks.internal.data.repositories.quote.QuoteRepositoryImpl
 import com.rafag.stonks.mock
 import com.rafag.stonks.runBlocking
 import com.rafag.stonks.whenever
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import kotlin.test.Test
 import kotlin.test.assertEquals

@@ -1,7 +1,6 @@
-package com.rafag.stonks.domain.repositories
+package com.rafag.stonks.internal.domain.repositories
 
-
-interface SearchRepository {
+internal interface SearchRepository {
 
     suspend fun search(symbol: String): Search
 }
