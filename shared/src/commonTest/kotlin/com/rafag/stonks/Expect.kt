@@ -1,6 +1,6 @@
 package com.rafag.stonks
 
-import com.rafag.stonks.internal.api.MockHttpClient
+import com.rafag.stonks.internal.data.httpclient.MockHttpClient
 
 expect fun <T> runBlocking(block: suspend () -> T): T
 

@@ -1,6 +1,6 @@
 package com.rafag.stonks.internal.data.repositories.quote
 
-import com.rafag.stonks.fixtures.QuoteFixture
+import com.rafag.stonks.internal.fixtures.QuoteFixture
 import com.rafag.stonks.mock
 import com.rafag.stonks.mockHttp
 import com.rafag.stonks.runBlocking

@@ -1,10 +1,10 @@
 package com.rafag.stonks.internal.domain.usecases
 
+import com.rafag.stonks.domain.usecases.SearchStonksUseCase
+import com.rafag.stonks.domain.usecases.StonkSearch
 import com.rafag.stonks.internal.domain.repositories.FavouritesRepository
 import com.rafag.stonks.internal.domain.repositories.SearchItem
 import com.rafag.stonks.internal.domain.repositories.SearchRepository
-import com.rafag.stonks.domain.usecases.SearchStonksUseCase
-import com.rafag.stonks.domain.usecases.StonkSearch
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flowOf

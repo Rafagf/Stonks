@@ -1,10 +1,8 @@
 package com.rafag.stonks.internal.data.repositories.search
 
-import com.rafag.stonks.fixtures.SearchFixture
+import com.rafag.stonks.internal.fixtures.SearchFixture
 import com.rafag.stonks.mockHttp
 import com.rafag.stonks.runBlocking
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flowOf
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -23,7 +21,7 @@ class SearchRepositoryImplTest {
 
         runBlocking {
             val result = repository.search(A_SEARCH)
-            assertEquals(result.first(), flowOf(AN_API_SEARCH.toModel()).first())
+            assertEquals(result, AN_API_SEARCH.toModel())
         }
     }
 }

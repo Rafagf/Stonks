@@ -1,4 +1,4 @@
-package com.rafag.stonks.fixtures
+package com.rafag.stonks.internal.fixtures
 
 import com.rafag.stonks.internal.data.repositories.quote.ApiQuoteResponse
 import com.rafag.stonks.internal.domain.repositories.Quote

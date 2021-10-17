@@ -1,4 +1,4 @@
-package com.rafag.stonks.domain.usecases
+package com.rafag.stonks.internal.domain.usecases
 
 import com.rafag.stonks.internal.domain.repositories.FavouritesRepository
 import com.rafag.stonks.mock
@@ -8,10 +8,10 @@ import kotlin.test.Test
 
 private const val A_SYMBOL = "GOOG"
 
-class ToggleFavouriteUseCaseTest {
+class ToggleFavouriteUseCaseImplTest {
 
     private val favouritesRepository = mock<FavouritesRepository>()
-    private val useCase = ToggleFavouriteUseCase(favouritesRepository)
+    private val useCase = ToggleFavouriteUseCaseImpl(favouritesRepository)
 
     @Test
     fun `when saved then propagate to repository`() = runBlocking {

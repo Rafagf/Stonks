@@ -1,7 +1,7 @@
 package com.rafag.stonks.internal.domain.usecases
 
-import com.rafag.stonks.internal.domain.repositories.FavouritesRepository
 import com.rafag.stonks.domain.usecases.ToggleFavouriteUseCase
+import com.rafag.stonks.internal.domain.repositories.FavouritesRepository
 
 internal class ToggleFavouriteUseCaseImpl(
     private val favouritesRepository: FavouritesRepository

@@ -1,10 +1,10 @@
 package com.rafag.stonks.internal.domain.usecases
 
+import com.rafag.stonks.domain.usecases.FavedQuote
+import com.rafag.stonks.domain.usecases.FetchFavedQuotesUseCase
 import com.rafag.stonks.internal.domain.repositories.FavouritesRepository
 import com.rafag.stonks.internal.domain.repositories.Quote
 import com.rafag.stonks.internal.domain.repositories.QuoteRepository
-import com.rafag.stonks.domain.usecases.FavedQuote
-import com.rafag.stonks.domain.usecases.FetchFavedQuotesUseCase
 import com.rafag.stonks.internal.data.repositories.quote.ErrorFetchingQuote
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow

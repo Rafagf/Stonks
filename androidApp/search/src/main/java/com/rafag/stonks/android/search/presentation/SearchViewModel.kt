@@ -5,17 +5,13 @@ import androidx.lifecycle.viewModelScope
 import com.rafag.stonks.domain.usecases.SearchStonksUseCase
 import com.rafag.stonks.domain.usecases.StonkSearch
 import com.rafag.stonks.domain.usecases.ToggleFavouriteUseCase
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 
 private const val DEBOUNCE_DELAY = 1000L
