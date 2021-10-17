@@ -2,7 +2,7 @@ package com.rafag.stonks.android
 
 import android.app.Application
 import com.rafag.stonks.android.di.ViewModelsProvider
-import com.rafag.stonks.db.DatabaseDriverFactory
+import com.rafag.stonks.data.db.DatabaseDriverFactory
 import com.rafag.stonks.domain.usecases.UseCasesProvider
 import com.stonks.db.StonksDatabase
 

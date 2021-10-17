@@ -1,4 +1,4 @@
-package com.rafag.stonks.internal.data.favourites
+package com.rafag.stonks.internal.data.repositories.favourites
 
 import com.squareup.sqldelight.runtime.coroutines.asFlow
 import com.squareup.sqldelight.runtime.coroutines.mapToList

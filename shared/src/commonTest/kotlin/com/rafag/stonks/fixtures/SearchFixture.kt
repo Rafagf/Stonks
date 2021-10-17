@@ -2,8 +2,8 @@ package com.rafag.stonks.fixtures
 
 import com.rafag.stonks.domain.repositories.Search
 import com.rafag.stonks.domain.repositories.SearchItem
-import com.rafag.stonks.internal.api.ApiSearchItemResponse
-import com.rafag.stonks.internal.api.ApiSearchResponse
+import com.rafag.stonks.internal.data.repositories.search.ApiSearchItemResponse
+import com.rafag.stonks.internal.data.repositories.search.ApiSearchResponse
 
 internal object SearchFixture {
 

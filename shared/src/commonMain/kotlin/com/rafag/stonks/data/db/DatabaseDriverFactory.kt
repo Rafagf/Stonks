@@ -1,4 +1,4 @@
-package com.rafag.stonks.db
+package com.rafag.stonks.data.db
 
 import com.squareup.sqldelight.db.SqlDriver
 

@@ -1,7 +1,6 @@
-package com.rafag.stonks.internal.data.search
+package com.rafag.stonks.internal.data.repositories.search
 
 import com.rafag.stonks.fixtures.SearchFixture
-import com.rafag.stonks.internal.api.SearchApi
 import com.rafag.stonks.mockHttp
 import com.rafag.stonks.runBlocking
 import kotlinx.coroutines.flow.first

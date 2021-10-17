@@ -1,4 +1,4 @@
-package com.rafag.stonks.db
+package com.rafag.stonks.data.db
 
 import android.content.Context
 import com.squareup.sqldelight.android.AndroidSqliteDriver

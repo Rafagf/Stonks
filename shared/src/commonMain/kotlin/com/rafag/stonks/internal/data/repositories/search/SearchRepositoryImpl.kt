@@ -1,14 +1,9 @@
-package com.rafag.stonks.internal.data.search
+package com.rafag.stonks.internal.data.repositories.search
 
-import com.rafag.stonks.internal.api.StonksHttpClient
-import com.rafag.stonks.internal.api.ApiSearchItemResponse
-import com.rafag.stonks.internal.api.ApiSearchResponse
-import com.rafag.stonks.internal.api.SearchApi
+import com.rafag.stonks.internal.data.httpclient.StonksHttpClient
 import com.rafag.stonks.domain.repositories.Search
 import com.rafag.stonks.domain.repositories.SearchItem
 import com.rafag.stonks.domain.repositories.SearchRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
 
 internal class SearchRepositoryImpl(
     private val httpClient: StonksHttpClient

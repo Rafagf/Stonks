@@ -1,6 +1,5 @@
-package com.rafag.stonks.internal.data.quote
+package com.rafag.stonks.internal.data.repositories.quote
 
-import com.rafag.stonks.internal.api.ApiQuoteResponse
 import com.stonks.db.DbQuote
 import com.stonks.db.StonksDatabase
 

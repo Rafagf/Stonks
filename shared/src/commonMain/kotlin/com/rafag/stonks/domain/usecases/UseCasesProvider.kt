@@ -3,12 +3,12 @@ package com.rafag.stonks.domain.usecases
 import com.rafag.stonks.domain.repositories.FavouritesRepository
 import com.rafag.stonks.domain.repositories.QuoteRepository
 import com.rafag.stonks.domain.repositories.SearchRepository
-import com.rafag.stonks.internal.api.StonksHttpClient
-import com.rafag.stonks.internal.data.favourites.FavouritesPersistence
-import com.rafag.stonks.internal.data.favourites.FavouritesRepositoryImpl
-import com.rafag.stonks.internal.data.quote.QuotePersistence
-import com.rafag.stonks.internal.data.quote.QuoteRepositoryImpl
-import com.rafag.stonks.internal.data.search.SearchRepositoryImpl
+import com.rafag.stonks.internal.data.httpclient.StonksHttpClient
+import com.rafag.stonks.internal.data.repositories.favourites.FavouritesPersistence
+import com.rafag.stonks.internal.data.repositories.favourites.FavouritesRepositoryImpl
+import com.rafag.stonks.internal.data.repositories.quote.QuotePersistence
+import com.rafag.stonks.internal.data.repositories.quote.QuoteRepositoryImpl
+import com.rafag.stonks.internal.data.repositories.search.SearchRepositoryImpl
 import com.stonks.db.StonksDatabase
 
 class UseCasesProvider(

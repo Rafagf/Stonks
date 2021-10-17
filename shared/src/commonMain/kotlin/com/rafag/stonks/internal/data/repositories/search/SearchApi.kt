@@ -1,6 +1,7 @@
-package com.rafag.stonks.internal.api
+package com.rafag.stonks.internal.data.repositories.search
 
-import com.rafag.stonks.internal.api.Method.*
+import com.rafag.stonks.internal.data.httpclient.HttpRequest
+import com.rafag.stonks.internal.data.httpclient.Method.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

@@ -2,7 +2,7 @@ package com.rafag.stonks.domain.usecases
 
 import com.rafag.stonks.domain.repositories.FavouritesRepository
 import com.rafag.stonks.fixtures.QuoteFixture
-import com.rafag.stonks.internal.data.quote.QuoteRepositoryImpl
+import com.rafag.stonks.internal.data.repositories.quote.QuoteRepositoryImpl
 import com.rafag.stonks.mock
 import com.rafag.stonks.runBlocking
 import com.rafag.stonks.whenever

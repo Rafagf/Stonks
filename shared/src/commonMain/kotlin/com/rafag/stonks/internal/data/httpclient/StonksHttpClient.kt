@@ -1,4 +1,4 @@
-package com.rafag.stonks.internal.api
+package com.rafag.stonks.internal.data.httpclient
 
 import io.ktor.client.HttpClient
 import io.ktor.client.features.json.JsonFeature

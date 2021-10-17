@@ -3,7 +3,7 @@ package com.rafag.stonks.domain.usecases
 import com.rafag.stonks.domain.repositories.FavouritesRepository
 import com.rafag.stonks.domain.repositories.Quote
 import com.rafag.stonks.domain.repositories.QuoteRepository
-import com.rafag.stonks.internal.data.quote.ErrorFetchingQuote
+import com.rafag.stonks.internal.data.repositories.quote.ErrorFetchingQuote
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapConcat

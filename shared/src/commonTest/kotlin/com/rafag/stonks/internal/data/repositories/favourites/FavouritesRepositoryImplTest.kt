@@ -1,6 +1,6 @@
-package com.rafag.stonks.internal.data.favourites
+package com.rafag.stonks.internal.data.repositories.favourites
 
-import com.rafag.stonks.internal.data.favourites.FavouritesRepositoryImpl.*
+import com.rafag.stonks.internal.data.repositories.favourites.FavouritesRepositoryImpl.*
 import com.rafag.stonks.mock
 import com.rafag.stonks.runBlocking
 import com.rafag.stonks.whenever
