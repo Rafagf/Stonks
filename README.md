@@ -2,7 +2,7 @@
 
 Stonks is a pet project app to track your favourite stocks.
 
-It uses Kotlin Multiplatform Mobile (KMM) to share code across iOS and Android.
+It uses [Kotlin Multiplatform Mobile (KMM)](https://kotlinlang.org/docs/kmm-overview.html) to share code across iOS and Android.
 
 ### KMM library
 - Repositories with both local and remote data sources (Data layer).
