@@ -14,7 +14,7 @@ It uses [Kotlin Multiplatform Mobile (KMM)](https://kotlinlang.org/docs/kmm-over
 - Home screen with faved stocks and search screen to find stocks (Presentation and UI layers).
 - Single activity architecture 
 - Light/Dark theme
-- Libraries: [Compose](https://developer.android.com/jetpack/compose) and [kotlin-coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
+- Libraries used: Stonks shared library, [Compose](https://developer.android.com/jetpack/compose) and [kotlin-coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
 
 | Home screen (Light)      | Home screen (Dark)  | Search screen (Light)      | Search screen (Dark)  |
 | ----------- | ----------- | ----------- | ----------- |
