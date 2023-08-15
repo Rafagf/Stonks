@@ -2,7 +2,7 @@
 
 [<img src="https://androidweekly.net/issues/issue-490/badge"/>](https://androidweekly.net/issues/issue-490)
 
-Stonks is a pet project app to track your favourite stocks.
+Stonks is a pet project app to track your favorite stocks.
 
 It uses [Kotlin Multiplatform Mobile (KMM)](https://kotlinlang.org/docs/kmm-overview.html) to share code across iOS and Android. 
 
