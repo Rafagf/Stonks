@@ -2,11 +2,11 @@
 
 [<img src="https://androidweekly.net/issues/issue-490/badge"/>](https://androidweekly.net/issues/issue-490)
 
-*Note: [This article](https://www.rafagarcia.dev/development/architecting-mobile-apps-with-kotlin-multiplatform/) about Stonks has been featured in both [Android Weekly (#490)](https://androidweekly.net/issues/issue-490) and [Kotlin Weeekly (#273)](https://mailchi.mp/kotlinweekly/kotlin-weekly-273). Thanks to both!* 🙏
-
 Stonks is a pet project app to track your favourite stocks.
 
 It uses [Kotlin Multiplatform Mobile (KMM)](https://kotlinlang.org/docs/kmm-overview.html) to share code across iOS and Android. 
+
+*Note: [This article](https://www.rafagarcia.dev/development/architecting-mobile-apps-with-kotlin-multiplatform/) about Stonks has been featured in both [Android Weekly (#490)](https://androidweekly.net/issues/issue-490) and [Kotlin Weeekly (#273)](https://mailchi.mp/kotlinweekly/kotlin-weekly-273). Thanks to both!* 🙏
 
 ### KMM library
 - Repositories with both local and remote data sources (Data layer).
