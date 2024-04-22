@@ -15,7 +15,7 @@ It uses [Kotlin Multiplatform Mobile (KMM)](https://kotlinlang.org/docs/kmm-over
 
 
 ### Android app
-- Home screen with faved stocks and search screen to find stocks (Presentation and UI layers).
+- Home screen with saved stocks and search screen to find stocks (Presentation and UI layers).
 - Single activity architecture 
 - Light/Dark theme
 - Libraries used: Stonks shared library, [Jetpack Compose](https://developer.android.com/jetpack/compose) and [kotlin-coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
